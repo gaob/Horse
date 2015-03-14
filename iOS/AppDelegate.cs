@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace App.iOS
 {
@@ -13,6 +14,9 @@ namespace App.iOS
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init ();
+
+			//Azure Mobile Service Init in iOS
+			CurrentPlatform.Init();
 
 			LoadApplication (new App ());
 
