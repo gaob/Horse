@@ -104,5 +104,15 @@ namespace App.iOS
 
 			return true;
 		}
+
+		public void ResetCachedToken (MobileServiceAuthenticationProvider provider)
+		{
+			SecRecord credentialLookupRec = new SecRecord(SecKind.GenericPassword)
+			{
+				Generic = NSData.FromString(provider.ToString())
+			};
+
+			SecKeyChain.Remove(credentialLookupRec);
+		}
 	}
 }

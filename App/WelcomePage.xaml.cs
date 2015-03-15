@@ -38,6 +38,7 @@ namespace App
 			}
 			else
 			{
+				DependencyService.Get<IMobileClient> ().ResetCachedToken (MobileServiceAuthenticationProvider.Facebook);
 				DependencyService.Get<IMobileClient>().Logout();
 
 				valueLabel.Text = "Logged out";

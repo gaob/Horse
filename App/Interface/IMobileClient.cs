@@ -10,5 +10,6 @@ namespace App
 		void Logout();
 		Task RetrieveCachedToken(MobileServiceAuthenticationProvider provider);
 		bool SaveCachedToken(MobileServiceUser theUser, MobileServiceAuthenticationProvider provider);
+		void ResetCachedToken (MobileServiceAuthenticationProvider provider);
 	}
 }

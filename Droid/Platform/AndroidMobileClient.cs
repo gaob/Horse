@@ -97,6 +97,18 @@ namespace App.Droid
 
 				return true;
 			}
+
+			public void ResetCachedToken (MobileServiceAuthenticationProvider provider)
+			{
+				ISharedPreferences preferences = Xamarin.Forms.Forms.Context.GetSharedPreferences ("preferences", FileCreationMode.Private);
+
+				ISharedPreferencesEditor editor = preferences.Edit();
+
+				// Remove the credentials with the expired token.
+				editor.Remove(USERID_PREFID);
+				editor.Remove(AUTHTOKEN_PREFID);
+				editor.Commit();
+			}
 		}
 	}
 }
