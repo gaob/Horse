@@ -11,10 +11,10 @@ namespace App
 
 		public App ()
 		{
+			client = MobileServiceHelper.DefaultService;
+
 			// The root page of your application
 			MainPage = new WelcomePage ();
-
-			client = MobileServiceHelper.DefaultService;
 		}
 
 		public static MobileServiceClient ServiceClient { get { return client.ServiceClient;}}
@@ -35,4 +35,3 @@ namespace App
 		}
 	}
 }
-

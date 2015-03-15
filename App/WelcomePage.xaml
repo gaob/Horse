@@ -8,7 +8,8 @@
 	           HorizontalOptions="Center"
 	           VerticalOptions="CenterAndExpand" />
 
-	    <Button Text="Click Me!"
+	    <Button x:Name="LoginB"
+	    		Text="Click Me!"
 	            HorizontalOptions="Center"
 	            VerticalOptions="CenterAndExpand"
 	            Clicked="OnButtonClicked" />

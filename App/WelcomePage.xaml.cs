@@ -12,15 +12,27 @@ namespace App
 		public WelcomePage ()
 		{
 			InitializeComponent ();
+
+			InitializeLoginButton ();
 		}
 
+		async void InitializeLoginButton ()
+		{
+			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (MobileServiceAuthenticationProvider.Facebook);
+
+			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null) {
+				LoginB.Text = "Log in";
+			} else {
+				valueLabel.Text = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
+
+				LoginB.Text = "Log out";
+			}
+		}
+		
 		async void OnButtonClicked(object sender, EventArgs args)
 		{
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
-				// DEMO 1 - Non cached authentication
-				//await AuthenticateUserAsync();
-
 				// DEMO 2 - Cached credentials using the key chain
 				await AuthenticateUserCachedTokenAsync();
 			}
@@ -40,8 +52,6 @@ namespace App
 		public async Task AuthenticateUserCachedTokenAsync(MobileServiceAuthenticationProvider providerType = MobileServiceAuthenticationProvider.Facebook)
 		{
 			string message;
-
-			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (providerType);
 
 			while (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
