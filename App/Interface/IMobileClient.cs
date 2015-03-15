@@ -8,6 +8,7 @@ namespace App
 	{
 		Task<MobileServiceUser> Authorize(MobileServiceAuthenticationProvider provider);
 		void Logout();
+		Task RetrieveCachedToken(MobileServiceAuthenticationProvider provider);
+		bool SaveCachedToken(MobileServiceUser theUser, MobileServiceAuthenticationProvider provider);
 	}
 }
-

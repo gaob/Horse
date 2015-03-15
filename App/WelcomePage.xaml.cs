@@ -19,10 +19,10 @@ namespace App
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
 				// DEMO 1 - Non cached authentication
-				await AuthenticateUserAsync();
+				//await AuthenticateUserAsync();
 
 				// DEMO 2 - Cached credentials using the key chain
-				//await AuthenticateUserCachedTokenAsync();
+				await AuthenticateUserCachedTokenAsync();
 			}
 			else
 			{
@@ -37,17 +37,20 @@ namespace App
 		/// </summary>
 		/// <param name="providerType">Type of the provider.</param>
 		/// <returns>Task.</returns>
-		public async Task AuthenticateUserAsync(MobileServiceAuthenticationProvider providerType = MobileServiceAuthenticationProvider.Facebook)
+		public async Task AuthenticateUserCachedTokenAsync(MobileServiceAuthenticationProvider providerType = MobileServiceAuthenticationProvider.Facebook)
 		{
+			string message;
+
+			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (providerType);
+
 			while (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
-				string message;
-
 				try
 				{
 					// Authenticate using provider type passed in. 
-					await DependencyService.Get<IMobileClient>().Authorize(providerType);
-					message = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
+					MobileServiceUser thisUser = await DependencyService.Get<IMobileClient>().Authorize(providerType);
+
+					DependencyService.Get<IMobileClient>().SaveCachedToken(thisUser, providerType);
 				}
 				catch (InvalidOperationException ex)
 				{
@@ -57,10 +60,11 @@ namespace App
 				{
 					message = ex.Message;
 				}
-
-				valueLabel.Text = message;
 			}
+
+			message = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
+
+			valueLabel.Text = message;
 		}
 	}
 }
-
