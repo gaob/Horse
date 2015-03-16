@@ -12,7 +12,12 @@
 	    		Text="Click Me!"
 	            HorizontalOptions="Center"
 	            VerticalOptions="CenterAndExpand"
-	            Clicked="OnButtonClicked" />
+	            Clicked="OnLoginClicked" />
+	    <Button x:Name="GetB"
+	    		Text="Click Me!"
+	            HorizontalOptions="Center"
+	            VerticalOptions="CenterAndExpand"
+	            Clicked="OnGetClicked" />
 	  </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

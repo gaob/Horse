@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -29,7 +30,7 @@ namespace App
 			}
 		}
 		
-		async void OnButtonClicked(object sender, EventArgs args)
+		async void OnLoginClicked(object sender, EventArgs args)
 		{
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
@@ -42,6 +43,43 @@ namespace App
 				DependencyService.Get<IMobileClient>().Logout();
 
 				valueLabel.Text = "Logged out";
+			}
+		}
+
+		async void OnGetClicked(object sender, EventArgs args)
+		{
+			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
+			{
+				valueLabel.Text = "Wrong!";
+			}
+			else
+			{
+				try
+				{
+					// Create the json to send using an anonymous type 
+					JToken payload = JObject.FromObject(new { msg = "facebook" });
+					// Make the call to the hello resource asynchronously using POST verb
+					var resultJson = await App.ServiceClient.InvokeApiAsync("hello", payload);
+
+					// Verfiy that a result was returned
+					if (resultJson.HasValues)
+					{
+						// Extract the value from the result
+						string messageResult = resultJson.Value<string>("accessToken");
+
+						// Set the text block with the result
+						valueLabel.Text = messageResult;
+					}
+					else
+					{
+						valueLabel.Text = "Nothing returned!";
+					}
+				}
+				catch (Exception ex)
+				{
+					// Display the exception message for the demo
+					valueLabel.Text = ex.Message;
+				}
 			}
 		}
 

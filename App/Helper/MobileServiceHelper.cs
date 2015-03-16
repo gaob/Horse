@@ -8,8 +8,8 @@ namespace App
 
 		private static MobileServiceHelper _instance;
 
-		const string applicationURL = @"https://csci-e64-cusapi-a-edu.azure-mobile.net/";
-		const string applicationKey = @"dBYhhtCxvmWhRVMgOHbCyaPzWOhMfs94";
+		const string applicationURL = @"https://dotnet3.azure-mobile.net/";
+		const string applicationKey = @"KjlDtnWMUnoQiFuxmlxdhYIMEUOnDs87";
 
 		private readonly MobileServiceClient _client;
 
