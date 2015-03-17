@@ -65,7 +65,7 @@ namespace App
 					if (resultJson.HasValues)
 					{
 						// Extract the value from the result
-						string messageResult = resultJson.Value<string>("accessToken");
+						string messageResult = resultJson.Value<string>("details");
 
 						// Set the text block with the result
 						valueLabel.Text = messageResult;
