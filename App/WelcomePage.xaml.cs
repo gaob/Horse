@@ -71,6 +71,8 @@ namespace App
 
 						// Set the text block with the result
 						valueLabel.Text = messageResult;
+
+						await Navigation.PushAsync(new MasterPage(messageResult));
 					}
 					else
 					{

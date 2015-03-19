@@ -14,7 +14,7 @@ namespace App
 			client = MobileServiceHelper.DefaultService;
 
 			// The root page of your application
-			MainPage = new WelcomePage ();
+			MainPage = new NavigationPage (new WelcomePage ());
 		}
 
 		public static MobileServiceClient ServiceClient { get { return client.ServiceClient;}}
