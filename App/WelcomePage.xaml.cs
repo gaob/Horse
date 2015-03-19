@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace App
 {
@@ -57,15 +58,16 @@ namespace App
 				try
 				{
 					// Create the json to send using an anonymous type 
-					JToken payload = JObject.FromObject(new { msg = "facebook" });
+					//JToken payload = JObject.FromObject(new { msg = "facebook" });
+
 					// Make the call to the hello resource asynchronously using POST verb
-					var resultJson = await App.ServiceClient.InvokeApiAsync("hello", payload);
+					var resultJson = await App.ServiceClient.InvokeApiAsync("me", HttpMethod.Get, null);
 
 					// Verfiy that a result was returned
 					if (resultJson.HasValues)
 					{
 						// Extract the value from the result
-						string messageResult = resultJson.Value<string>("details");
+						string messageResult = resultJson.Value<string>("pic_url");
 
 						// Set the text block with the result
 						valueLabel.Text = messageResult;
