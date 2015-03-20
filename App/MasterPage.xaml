@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="App.MasterPage">
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				  x:Class="App.MasterPage"
+				  xmlns:local="clr-namespace:App;assembly=App">
     <MasterDetailPage.Master>
       <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master">
           <StackLayout Orientation="Vertical">
-              <Label Text="Horse" HorizontalOptions="Center" TextColor="White"/>
+              <Label Text="Horse" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
-              <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="White"/>
+              <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
           </StackLayout>
         </ContentPage>
 
