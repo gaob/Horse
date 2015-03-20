@@ -15,11 +15,21 @@ namespace App
 		{
 			InitializeComponent ();
 
-			InitializeLoginButton ();
+			NavigationPage.SetHasNavigationBar (this, false);
 		}
 
-		async void InitializeLoginButton ()
+		protected async override void OnAppearing()
 		{
+			base.OnAppearing ();
+
+			await InitializeLoginButton ();
+		}
+
+		//May need to put it in OnAppearing()
+		async Task InitializeLoginButton ()
+		{
+			GetB.Text = "Get";
+
 			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (MobileServiceAuthenticationProvider.Facebook);
 
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null) {
@@ -66,13 +76,11 @@ namespace App
 					// Verfiy that a result was returned
 					if (resultJson.HasValues)
 					{
-						// Extract the value from the result
-						string messageResult = resultJson.Value<string>("pic_url");
+						MeVM me = new MeVM(resultJson as JObject);
 
-						// Set the text block with the result
-						valueLabel.Text = messageResult;
+						valueLabel.Text = "Gotten";
 
-						await Navigation.PushAsync(new MasterPage(messageResult));
+						await Navigation.PushAsync(new MasterPage(me));
 					}
 					else
 					{

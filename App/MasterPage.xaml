@@ -3,8 +3,8 @@
     <MasterDetailPage.Master>
       <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master">
           <StackLayout Orientation="Vertical">
-          	  <Image Source="{Binding Url}" HorizontalOptions="Start"/>
-              <Label Text="Master" HorizontalOptions="Center" />
+              <Label Text="Horse" HorizontalOptions="Center" />
+          	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" />
           </StackLayout>
         </ContentPage>
