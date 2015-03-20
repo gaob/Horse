@@ -3,9 +3,9 @@
     <MasterDetailPage.Master>
       <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master">
           <StackLayout Orientation="Vertical">
-              <Label Text="Horse" HorizontalOptions="Center" />
+              <Label Text="Horse" HorizontalOptions="Center" TextColor="White"/>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
-              <Label Text="{Binding Subtitle}" HorizontalOptions="Center" />
+              <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="White"/>
           </StackLayout>
         </ContentPage>
 

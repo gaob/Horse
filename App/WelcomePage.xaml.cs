@@ -25,7 +25,6 @@ namespace App
 			await InitializeLoginButton ();
 		}
 
-		//May need to put it in OnAppearing()
 		async Task InitializeLoginButton ()
 		{
 			GetB.Text = "Get";
