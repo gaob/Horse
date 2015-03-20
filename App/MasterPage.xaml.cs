@@ -26,5 +26,10 @@ namespace App
 		{
 			base.OnAppearing ();
 		}
+
+		async void OnGetClicked(object sender, EventArgs args)
+		{
+			IsPresented = true;
+		}
 	}
 }

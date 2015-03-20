@@ -13,11 +13,20 @@
         </ContentPage>
 
     </MasterDetailPage.Master>
-
+        
     <MasterDetailPage.Detail>
-        <ContentPage Padding="5, 25"  BindingContext="{Binding Detailpage}">
+        <ContentPage BindingContext="{Binding Detailpage}" BackgroundColor="White">
 
           <StackLayout Orientation="Vertical">
+          	  <StackLayout Padding="5, 5, 0, 0" Orientation="Horizontal" BackgroundColor="{x:Static local:AppConstants.ToolbarColor}">
+          	  	<Button x:Name="GetB"
+		            Image="settings.png"
+		            Clicked="OnGetClicked"
+		            Text="    "
+		            HorizontalOptions="Start"
+		            VerticalOptions="CenterAndExpand"/>
+	            <Label Text="Detail" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+          	  </StackLayout>
               <Label Text="Detail" HorizontalOptions="Center" />
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" />
           </StackLayout>
