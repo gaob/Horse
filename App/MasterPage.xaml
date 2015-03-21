@@ -4,14 +4,33 @@
 				  x:Class="App.MasterPage"
 				  xmlns:local="clr-namespace:App;assembly=App">
     <MasterDetailPage.Master>
-      <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master">
-          <StackLayout Orientation="Vertical">
-              <Label Text="Horse" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
+      <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master" BackgroundColor="{x:Static local:AppConstants.BackgroundColor}">
+          <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+          	  <ContentView Padding="10, 36, 0, 5">
+          	  	<Label Text="Horse" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
+          	  </ContentView>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
+              <ListView ItemsSource="{x:Static local:NamedColor.All}"
+              			BackgroundColor="Transparent"
+              			VerticalOptions="FillAndExpand">
+              	<ListView.ItemTemplate>
+              		<DataTemplate>
+              			<ViewCell>
+              				<ViewCell.View>
+              					<StackLayout>
+              						<Label Text="{Binding FriendlyName}" 
+              							   HorizontalOptions="CenterAndExpand" 
+              							   VerticalOptions="CenterAndExpand"
+              							   TextColor="White"/>
+              					</StackLayout>
+              				</ViewCell.View>
+              			</ViewCell>
+              		</DataTemplate>
+              	</ListView.ItemTemplate>
+              </ListView>
           </StackLayout>
         </ContentPage>
-
     </MasterDetailPage.Master>
         
     <MasterDetailPage.Detail>

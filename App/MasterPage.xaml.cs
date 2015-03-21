@@ -13,8 +13,6 @@ namespace App
 
 			NavigationPage.SetHasNavigationBar (this, false);
 
-			Master.BackgroundColor = Color.FromHex("333333");
-
 			BindingContext = new {
 				Menu = new { Subtitle = me.name, 
 					Url = me.pic_url},
