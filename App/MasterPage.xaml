@@ -11,7 +11,7 @@
           	  </ContentView>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
-              <ListView ItemsSource="{x:Static local:NamedColor.All}"
+              <ListView ItemsSource="{x:Static local:MenuItems.All}"
               			BackgroundColor="Transparent"
               			VerticalOptions="FillAndExpand">
               	<ListView.ItemTemplate>
@@ -19,8 +19,8 @@
               			<ViewCell>
               				<ViewCell.View>
               					<StackLayout>
-              						<Label Text="{Binding FriendlyName}" 
-              							   HorizontalOptions="CenterAndExpand" 
+              						<Label Text="{Binding Title}" 
+              							   HorizontalOptions="CenterAndExpand"
               							   VerticalOptions="CenterAndExpand"
               							   TextColor="White"/>
               					</StackLayout>
@@ -38,10 +38,11 @@
 
           <StackLayout Orientation="Vertical">
           	  <StackLayout Padding="5, 5, 0, 0" Orientation="Horizontal" BackgroundColor="{x:Static local:AppConstants.ToolbarColor}">
-          	  	<Button x:Name="GetB"
+          	  	<Button 
 		            Image="settings.png"
 		            Clicked="OnGetClicked"
 		            Text="    "
+		            BackgroundColor = "Transparent"
 		            HorizontalOptions="Start"
 		            VerticalOptions="CenterAndExpand"/>
 	            <Label Text="Detail" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
