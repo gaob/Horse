@@ -11,7 +11,8 @@
           	  </ContentView>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
-              <ListView ItemsSource="{x:Static local:MenuItems.All}"
+              <ListView x:Name="Menu"
+              			ItemsSource="{x:Static local:MenuItems.All}"
               			BackgroundColor="Transparent"
               			VerticalOptions="FillAndExpand">
               	<ListView.ItemTemplate>

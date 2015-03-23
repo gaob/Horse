@@ -18,6 +18,11 @@ namespace App
 					Url = me.pic_url},
 				Detailpage = new { Subtitle = "I'm Detail" }
 			};
+
+			Menu.ItemSelected += (sender, e) => {
+				Detail = new UnevenRowsXaml ();
+				IsPresented = false;
+			};
 		}
 
 		protected override void OnAppearing()
