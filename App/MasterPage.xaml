@@ -7,7 +7,7 @@
       <ContentPage Padding="5, 25"  BindingContext="{Binding Menu}" Title="Master" BackgroundColor="{x:Static local:AppConstants.BackgroundColor}">
           <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
           	  <ContentView Padding="10, 36, 0, 5">
-          	  	<Label Text="Horse" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
+          	  	<Label Text="HorseFriends" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
           	  </ContentView>
           	  <Image Source="{Binding Url}" HorizontalOptions="FillAndExpand"/>
               <Label Text="{Binding Subtitle}" HorizontalOptions="Center" TextColor="{x:Static local:AppConstants.ForegroundColor}"/>
@@ -46,10 +46,10 @@
 		            BackgroundColor = "Transparent"
 		            HorizontalOptions="Start"
 		            VerticalOptions="CenterAndExpand"/>
-	            <Label Text="Detail" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+	            <Label Text="News Feed" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
           	  </StackLayout>
-              <Label Text="Detail" HorizontalOptions="Center" />
-              <Label Text="{Binding Subtitle}" HorizontalOptions="Center" />
+              <Label Text="Happy day! They are out and loving it!" HorizontalOptions="Center" />
+              <Image Source="horse.jpg"></Image>
           </StackLayout>
 
         </ContentPage>

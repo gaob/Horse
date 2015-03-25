@@ -14,6 +14,16 @@ namespace App
 		public override string Title { get { return "Log Out"; } }
 	}
 
+	public class MessagesItem : MenuItem
+	{
+		public override string Title { get { return "Messages"; } }
+	}
+
+	public class NotificationsItem : MenuItem
+	{
+		public override string Title { get { return "Notifications"; } }
+	}
+
 	public abstract class MenuItem
 	{
 		public virtual string Title { get; set; }
@@ -27,6 +37,8 @@ namespace App
 			List<MenuItem> aList = new List<MenuItem> ();
 
 			aList.Add (new NewsFeedItem ());
+			aList.Add (new MessagesItem ());
+			aList.Add (new NotificationsItem ());
 			aList.Add (new LogOutItem ());
 
 			All = aList;
