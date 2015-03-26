@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 namespace App
 {
+	public class AddHorseItem : MenuItem
+	{
+		public override string Title { get { return "Add Horse"; } }
+	}
+
 	public class NewsFeedItem : MenuItem
 	{
 		public override string Title { get { return "News Feed"; } }
@@ -36,6 +41,7 @@ namespace App
 		{
 			List<MenuItem> aList = new List<MenuItem> ();
 
+			aList.Add (new AddHorseItem ());
 			aList.Add (new NewsFeedItem ());
 			aList.Add (new MessagesItem ());
 			aList.Add (new NotificationsItem ());
