@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using System.Windows.Input;
 
 namespace App
 {
@@ -10,8 +11,6 @@ namespace App
 		public UnevenRowsXaml ()
 		{
 			InitializeComponent ();
-
-			listView.IsPullToRefreshEnabled = true;
 
 			// http://en.wikipedia.org/wiki/To_be,_or_not_to_be
 			listView.ItemsSource = new [] { 
@@ -30,6 +29,14 @@ For in that sleep of death, what dreams may come,",
 Must give us pause. "
 			
 			};
+
+			listView.RefreshCommand = new Command (() => {
+				listView.ItemsSource = new [] { 
+					"To be, or not to be,"
+				};
+
+				listView.IsRefreshing = false;
+			});
 		}
 
 		public void OnItemSelected (object sender, SelectedItemChangedEventArgs e) {
@@ -46,4 +53,3 @@ Must give us pause. "
 		}
 	}
 }
-

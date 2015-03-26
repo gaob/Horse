@@ -15,7 +15,10 @@
 		            VerticalOptions="CenterAndExpand"/>
 	            <Label Text="Detail" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
-	    <ListView x:Name="listView" ItemSelected="OnItemSelected" HasUnevenRows="true">
+	    <ListView x:Name="listView"
+	    		  ItemSelected="OnItemSelected" 
+	    		  HasUnevenRows="true" 
+	    		  IsPullToRefreshEnabled="true">
 		  <ListView.ItemTemplate>
 		    <DataTemplate>
 		      <ViewCell>
