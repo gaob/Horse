@@ -15,6 +15,7 @@ namespace App
 
 			// The root page of your application
 			MainPage = new NavigationPage (new WelcomePage ());
+			//MainPage = new MasterView ();
 		}
 
 		public static MobileServiceClient ServiceClient { get { return client.ServiceClient;}}

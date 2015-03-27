@@ -79,7 +79,9 @@ namespace App
 
 						valueLabel.Text = "Gotten";
 
-						await Navigation.PushAsync(new MasterPage(me));
+						//await Navigation.PushAsync(new MasterView());
+
+						await Navigation.PushModalAsync(new MasterView());
 					}
 					else
 					{

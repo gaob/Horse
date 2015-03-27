@@ -53,6 +53,9 @@ namespace App.Droid
 			// aapt resource value: 0x7f020002
 			public const int settings = 2130837506;
 			
+			// aapt resource value: 0x7f020003
+			public const int slideout = 2130837507;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
