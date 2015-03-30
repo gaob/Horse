@@ -123,13 +123,23 @@ namespace App
 
 			listView.ItemsSource = viewModel.MenuItems;
 			if (about == null)
-				about = new UnevenRowsXaml();
+				about = new NewsFeedView();
 
 			PageSelection = about;
 			//Change to the correct page
 			listView.ItemSelected += (sender, args) =>
 			{
-				PageSelection = about;
+				var menuItem = listView.SelectedItem as HomeMenuItem;
+				menuType = menuItem.MenuType;
+				switch (menuItem.MenuType)
+				{
+					case MenuType.NewsFeed:
+						pageSelection = new NewsFeedView();
+						break;
+					default:
+						PageSelection = about;
+						break;
+				}
 			};
 
 			listView.SelectedItem = viewModel.MenuItems[0];
