@@ -141,6 +141,7 @@
     <BundleResource Include="Resources\horse.jpg" />
     <BundleResource Include="Resources\slideout.png" />
     <BundleResource Include="Resources\slideout%402x.png" />
+    <BundleResource Include="Resources\about.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

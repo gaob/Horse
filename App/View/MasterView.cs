@@ -14,10 +14,10 @@ namespace App
 		MenuView master;
 		private Dictionary<MenuType, NavigationPage> pages;
 
-		public MasterView ()
+		public MasterView (MeVM me)
 		{
 			pages = new Dictionary<MenuType, NavigationPage>();
-			BindingContext = new MasterViewModel();
+			BindingContext = new MasterViewModel(me);
 
 			Master = master = new MenuView(ViewModel);
 
@@ -28,7 +28,7 @@ namespace App
 			};
 			Detail = homeNav;
 
-			pages.Add(MenuType.About, homeNav);
+			pages.Add(MenuType.AddHorse, homeNav);
 
 			master.PageSelectionChanged = async (menuType) =>
 			{
@@ -60,7 +60,7 @@ namespace App
 	{
 		public Action<MenuType> PageSelectionChanged;
 		private Page pageSelection;
-		private MenuType menuType = MenuType.About;
+		private MenuType menuType = MenuType.AddHorse;
 		public Page PageSelection
 		{
 			get { return pageSelection; }
@@ -72,15 +72,14 @@ namespace App
 			}
 		}
 
-		private Page about, blog, twitter, hanselminutes, ratchet, developerlife;
+		private Page about;
 
 		public MenuView(MasterViewModel viewModel)
 		{
 			this.Icon = "slideout.png";
 			BindingContext = viewModel;
 
-
-			var layout = new StackLayout { Spacing = 0 };
+			var layout = new StackLayout { Spacing = 0, BackgroundColor = Color.White};
 
 			var label = new ContentView
 			{
@@ -88,12 +87,28 @@ namespace App
 				BackgroundColor = Color.Transparent,
 				Content = new Label
 				{
-					Text = "MENU",
-					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
+					Text = "HorseFriends",
+					FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+					TextColor = Color.Black
 				}
 			};
 
 			layout.Children.Add(label);
+
+			var profile_pic = new Image ();
+
+			profile_pic.Source = viewModel.pic_url;
+			profile_pic.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+			layout.Children.Add (profile_pic);
+
+			var name = new Label ();
+
+			name.Text = viewModel.name;
+			name.HorizontalOptions = LayoutOptions.Center;
+			name.TextColor = Color.Black;
+
+			layout.Children.Add (name);
 
 			var listView = new ListView();
 
@@ -102,6 +117,7 @@ namespace App
 			cell = new DataTemplate(typeof(ImageCell));
 			cell.SetBinding(TextCell.TextProperty, MasterViewModel.TitlePropertyName);
 			cell.SetBinding(ImageCell.ImageSourceProperty, "Icon");
+			cell.SetValue (TextCell.TextColorProperty, Color.Black);
 
 			listView.ItemTemplate = cell;
 

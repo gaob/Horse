@@ -6,55 +6,40 @@ namespace App
 	public class MasterViewModel : BaseViewModel
 	{
 		public ObservableCollection<HomeMenuItem> MenuItems { get; set; }
-		public MasterViewModel()
+
+		//MeVM
+		private MeVM itsMe { get; set; }
+		public string pic_url { get { return itsMe.pic_url; } }
+		public string name {get { return itsMe.name; } }
+
+		public MasterViewModel(MeVM me)
 		{
 			CanLoadMore = true;
-			Title = "Hanselman";
+			Title = "HorseFriendsTitle";
 			MenuItems = new ObservableCollection<HomeMenuItem>();
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 0,
 					Title = "About",
-					MenuType = MenuType.About,
+					MenuType = MenuType.AddHorse,
 					Icon = "about.png"
 				});
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 1,
 					Title = "Blog",
-					MenuType = MenuType.Blog,
+					MenuType = MenuType.NewsFeed,
 					Icon = "blog.png"
 				});
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 2,
 					Title = "Twitter",
-					MenuType = MenuType.Twitter,
+					MenuType = MenuType.LogOut,
 					Icon = "twitternav.png"
 				});
-			MenuItems.Add(new HomeMenuItem
-				{
-					Id = 3,
-					Title = "Hanselminutes",
-					MenuType = MenuType.Hanselminutes,
-					Icon = "hm.png"
-				});
-			MenuItems.Add(new HomeMenuItem
-				{
-					Id = 4,
-					Title = "Ratchet & The Geek",
-					MenuType = MenuType.Ratchet,
-					Icon = "ratchet.png"
-				});
 
-			MenuItems.Add(new HomeMenuItem
-				{
-					Id = 5,
-					Title = "This Developer's Life",
-					MenuType = MenuType.DeveloperLife,
-					Icon = "tdl.png"
-				});
+			itsMe = me;
 		}
 	}
 }
-

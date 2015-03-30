@@ -81,7 +81,7 @@ namespace App
 
 						//await Navigation.PushAsync(new MasterView());
 
-						await Navigation.PushModalAsync(new MasterView());
+						await Navigation.PushModalAsync(new MasterView(me));
 					}
 					else
 					{
