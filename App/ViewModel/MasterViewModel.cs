@@ -5,7 +5,7 @@ namespace App
 {
 	public class MasterViewModel : BaseViewModel
 	{
-		public ObservableCollection<HomeMenuItem> MenuItems { get; set; }
+		public ObservableCollection<MenuItem> MenuItems { get; set; }
 
 		//MeVM
 		private MeVM itsMe { get; set; }
@@ -16,22 +16,22 @@ namespace App
 		{
 			CanLoadMore = true;
 			Title = "HorseFriendsTitle";
-			MenuItems = new ObservableCollection<HomeMenuItem>();
-			MenuItems.Add(new HomeMenuItem
+			MenuItems = new ObservableCollection<MenuItem>();
+			MenuItems.Add(new MenuItem
 				{
 					Id = 0,
 					Title = "Add Horse",
 					MenuType = MenuType.AddHorse,
 					Icon = "about.png"
 				});
-			MenuItems.Add(new HomeMenuItem
+			MenuItems.Add(new MenuItem
 				{
 					Id = 1,
 					Title = "News Feed",
 					MenuType = MenuType.NewsFeed,
 					Icon = "blog.png"
 				});
-			MenuItems.Add(new HomeMenuItem
+			MenuItems.Add(new MenuItem
 				{
 					Id = 2,
 					Title = "Log Out",

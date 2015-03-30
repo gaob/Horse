@@ -129,7 +129,7 @@ namespace App
 			//Change to the correct page
 			listView.ItemSelected += (sender, args) =>
 			{
-				var menuItem = listView.SelectedItem as HomeMenuItem;
+				var menuItem = listView.SelectedItem as MenuItem;
 				menuType = menuItem.MenuType;
 				switch (menuItem.MenuType)
 				{
@@ -137,7 +137,7 @@ namespace App
 						pageSelection = new NewsFeedView();
 						break;
 					default:
-						PageSelection = about;
+						PageSelection = new NewsFeedView();
 						break;
 				}
 			};
