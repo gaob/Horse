@@ -1,55 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace App
 {
-	public class AddHorseItem : MenuItem
+	public enum MenuType
 	{
-		public override string Title { get { return "Add Horse"; } }
+		AddHorse,
+		NewsFeed,
+		LogOut
 	}
 
-	public class NewsFeedItem : MenuItem
+	public class MenuItem
 	{
-		public override string Title { get { return "News Feed"; } }
-	}
-
-	public class LogOutItem : MenuItem
-	{
-		public override string Title { get { return "Log Out"; } }
-	}
-
-	public class MessagesItem : MenuItem
-	{
-		public override string Title { get { return "Messages"; } }
-	}
-
-	public class NotificationsItem : MenuItem
-	{
-		public override string Title { get { return "Notifications"; } }
-	}
-
-	public abstract class MenuItem
-	{
-		public virtual string Title { get; set; }
-		public virtual bool Selected { get; set; }
-	}
-
-	public class MenuItems
-	{
-		static MenuItems()
+		public MenuItem ()
 		{
-			List<MenuItem> aList = new List<MenuItem> ();
-
-			aList.Add (new AddHorseItem ());
-			aList.Add (new NewsFeedItem ());
-			aList.Add (new MessagesItem ());
-			aList.Add (new NotificationsItem ());
-			aList.Add (new LogOutItem ());
-
-			All = aList;
+			MenuType = MenuType.AddHorse;
 		}
 
-		public static IEnumerable<MenuItem> All { private set; get; }
+		//Base fields
+		public string Title {get;set;}
+		public string Details { get; set; }
+		public int Id { get; set; }
+
+		public string Icon {get;set;}
+		public MenuType MenuType { get; set; }
 	}
 }
