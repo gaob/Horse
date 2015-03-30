@@ -39,7 +39,6 @@
     <Compile Include="Interface\IMobileClient.cs" />
     <Compile Include="Model\MeVM.cs" />
     <Compile Include="AppConstants.cs" />
-    <Compile Include="Model\MenuItem.cs" />
     <Compile Include="UnevenRowsXaml.xaml.cs">
       <DependentUpon>UnevenRowsXaml.xaml</DependentUpon>
     </Compile>
