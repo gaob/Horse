@@ -20,21 +20,21 @@ namespace App
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 0,
-					Title = "About",
+					Title = "Add Horse",
 					MenuType = MenuType.AddHorse,
 					Icon = "about.png"
 				});
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 1,
-					Title = "Blog",
+					Title = "News Feed",
 					MenuType = MenuType.NewsFeed,
 					Icon = "blog.png"
 				});
 			MenuItems.Add(new HomeMenuItem
 				{
 					Id = 2,
-					Title = "Twitter",
+					Title = "Log Out",
 					MenuType = MenuType.LogOut,
 					Icon = "twitternav.png"
 				});
