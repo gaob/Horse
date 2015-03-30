@@ -123,7 +123,7 @@ namespace App
 
 			listView.ItemsSource = viewModel.MenuItems;
 			if (about == null)
-				about = new NewsFeedView();
+				about = new UnevenRowsXaml();
 
 			PageSelection = about;
 			//Change to the correct page
@@ -134,10 +134,10 @@ namespace App
 				switch (menuItem.MenuType)
 				{
 					case MenuType.NewsFeed:
-						pageSelection = new NewsFeedView();
+						PageSelection = new NewsFeedView();
 						break;
 					default:
-						PageSelection = new NewsFeedView();
+						PageSelection = about;
 						break;
 				}
 			};
