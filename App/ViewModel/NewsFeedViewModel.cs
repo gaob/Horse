@@ -72,9 +72,9 @@ namespace App
 				{
 					FeedItems.Add(item);
 				}
-			} catch (Exception ex) {
+			} catch (Exception) {
 				var page = new ContentPage();
-				var result = page.DisplayAlert ("Error", "Unable to load blog.", "OK");
+				/*var result = */await page.DisplayAlert ("Error", "Unable to load blog.", "OK");
 			}
 
 			IsBusy = false;

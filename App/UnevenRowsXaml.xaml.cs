@@ -32,7 +32,17 @@ Must give us pause. "
 
 			listView.RefreshCommand = new Command (() => {
 				listView.ItemsSource = new [] { 
-					"To be, or not to be,"
+					"To be, or not to be,", 
+					"that is the question— Whether 'tis Nobler in the mind to suffer",
+					@"The Slings and Arrows of outrageous Fortune,
+Or to take Arms against a Sea of troubles,",
+					@"And by opposing end them? To die, to sleep—
+No more; and by a sleep, to say we end
+The Heart-ache, and the thousand Natural shocks",
+					@"That Flesh is heir to? 'Tis a consummation
+Devoutly to be wished. To die, to sleep,
+To sleep, perchance to Dream; Aye, there's the rub,
+For in that sleep of death, what dreams may come,",
 				};
 
 				listView.IsRefreshing = false;

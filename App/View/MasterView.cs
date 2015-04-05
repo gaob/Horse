@@ -30,7 +30,7 @@ namespace App
 
 			pages.Add(MenuType.AddHorse, homeNav);
 
-			master.PageSelectionChanged = async (menuType) =>
+			master.PageSelectionChanged = (menuType) =>
 			{
 				NavigationPage newPage;
 				if (pages.ContainsKey(menuType))
@@ -48,8 +48,7 @@ namespace App
 				}
 				Detail = newPage;
 				Detail.Title = master.PageSelection.Title;
-				if(Device.Idiom != TargetIdiom.Tablet)
-					IsPresented = false;
+				IsPresented = false;
 			};
 
 			this.Icon = "slideout.png";

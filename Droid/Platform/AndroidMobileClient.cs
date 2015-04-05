@@ -23,7 +23,8 @@ namespace App.Droid
 
 			public void Logout()
 			{
-				Android.Webkit.CookieSyncManager.CreateInstance(Android.App.Application.Context);
+				//Deprecated in API 21
+				//Android.Webkit.CookieSyncManager.CreateInstance(Android.App.Application.Context);
 				Android.Webkit.CookieManager.Instance.RemoveAllCookie();
 
 				App.ServiceClient.Logout ();

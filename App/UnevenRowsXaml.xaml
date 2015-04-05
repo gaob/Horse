@@ -23,7 +23,7 @@
 		    <DataTemplate>
 		      <ViewCell>
 		      	<StackLayout Padding="15, 5, 5, 5" HorizontalOptions="StartAndExpand" Orientation="Vertical">	
-		      		<Label Text="{Binding .}" YAlign="Center" FontSize="Small" />
+		      		<Label Text="{Binding .}" YAlign="Center" FontSize="Small" TextColor="Black"/>
 		         </StackLayout>
 		      </ViewCell>
 		    </DataTemplate>
