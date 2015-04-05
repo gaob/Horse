@@ -135,8 +135,11 @@ namespace App
 					case MenuType.NewsFeed:
 						PageSelection = new NewsFeedView();
 						break;
+					case MenuType.AddHorse:
+						PageSelection = new HorseView();
+						break;
 					default:
-						PageSelection = about;
+						PageSelection = new UnevenRowsXaml();
 						break;
 				}
 			};

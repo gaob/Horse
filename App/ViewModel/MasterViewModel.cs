@@ -9,8 +9,8 @@ namespace App
 
 		//MeVM
 		private MeVM itsMe { get; set; }
-		public string pic_url { get { return itsMe.pic_url; } }
-		public string name {get { return itsMe.name; } }
+		public string pic_url { get { return itsMe.Pic_url; } }
+		public string name {get { return itsMe.Name; } }
 
 		public MasterViewModel(MeVM me)
 		{

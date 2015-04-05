@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="App.HorseView"
+			 Title="{Binding Title}"
+			 Icon="{Binding Icon}"
+			 IsBusy="{Binding IsBusy}">
+	<ContentPage.Content>
+	  <StackLayout>
+	  	<Label x:Name="valueLabel"
+	           Text="A simple Label"
+	           FontSize="Large"
+	           HorizontalOptions="Center"
+	           VerticalOptions="CenterAndExpand" />
+	    <Button x:Name="GetB"
+	    		Text="Click Me!"
+	            HorizontalOptions="Center"
+	            VerticalOptions="CenterAndExpand"
+	            Clicked="OnGetClicked" />
+	  </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
