@@ -7,16 +7,18 @@
 			 IsBusy="{Binding IsBusy}">
 	<ContentPage.Content>
 	  <StackLayout>
-	  	<Label x:Name="valueLabel"
+	    <Button x:Name="GetB"
+	    		Text="Click Me!"
+	            HorizontalOptions="CenterAndExpand"
+	            VerticalOptions="CenterAndExpand"
+	            HeightRequest="100"
+	            WidthRequest="100"
+	            Clicked="OnGetClicked" />
+	   	<Label x:Name="valueLabel"
 	           Text="A simple Label"
 	           FontSize="Large"
 	           HorizontalOptions="Center"
-	           VerticalOptions="CenterAndExpand" />
-	    <Button x:Name="GetB"
-	    		Text="Click Me!"
-	            HorizontalOptions="Center"
-	            VerticalOptions="CenterAndExpand"
-	            Clicked="OnGetClicked" />
+	           VerticalOptions="Center" />
 	  </StackLayout>
 	</ContentPage.Content>
 </ContentPage>

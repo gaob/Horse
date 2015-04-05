@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
+using Media.Plugin;
 
 namespace App
 {
@@ -24,6 +25,31 @@ namespace App
 			{
 				try
 				{
+					/*
+					if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+					{
+						await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+						return;
+					}
+					*/
+
+					var file = await CrossMedia.Current.PickPhotoAsync();
+
+					if (file == null)
+						return;
+
+					GetB.Image = new FileImageSource { File = file.Path};
+
+					/*
+					image.Source = ImageSource.FromStream(() =>
+						{
+							var stream = file.GetStream();
+							file.Dispose();
+							return stream;
+						});
+					*/
+
+					/*
 					HorseTable = App.ServiceClient.GetTable<HorseItem> ();
 
 					HorseItem aHorse = new HorseItem (null);
@@ -31,6 +57,7 @@ namespace App
 					await HorseTable.InsertAsync (aHorse);
 
 					valueLabel.Text = "Nothing returned!";
+					*/
 				}
 				catch (Exception ex)
 				{
