@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Microsoft.WindowsAzure.MobileServices;
 using Media.Plugin;
+using System.IO;
 
 namespace App
 {
@@ -38,16 +39,13 @@ namespace App
 					if (file == null)
 						return;
 
-					GetB.Image = new FileImageSource { File = file.Path};
+					var stream = file.GetStream();
 
-					/*
-					image.Source = ImageSource.FromStream(() =>
-						{
-							var stream = file.GetStream();
-							file.Dispose();
-							return stream;
-						});
-					*/
+					byte[] imageBytes = ReadFully(stream);
+
+					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+
+					file.Dispose();
 
 					/*
 					HorseTable = App.ServiceClient.GetTable<HorseItem> ();
@@ -64,6 +62,17 @@ namespace App
 					// Display the exception message for the demo
 					valueLabel.Text = ex.Message;
 				}
+			}
+		}
+
+		public static byte[] ReadFully(Stream input) {
+			byte[] buffer = new byte[16*1024];
+			using(MemoryStream ms = new MemoryStream()) {
+				int read;
+				while((read = input.Read(buffer, 0, buffer.Length)) > 0) {
+					ms.Write(buffer, 0, read);
+				}
+				return ms.ToArray();
 			}
 		}
 	}

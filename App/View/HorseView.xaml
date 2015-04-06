@@ -19,6 +19,11 @@
 	           FontSize="Large"
 	           HorizontalOptions="Center"
 	           VerticalOptions="Center" />
+	    <Image x:Name="image"
+	    	   HorizontalOptions="CenterAndExpand"
+	           VerticalOptions="CenterAndExpand"
+	           HeightRequest="100"
+	           WidthRequest="100"/>
 	  </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
