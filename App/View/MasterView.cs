@@ -28,7 +28,7 @@ namespace App
 			};
 			Detail = homeNav;
 
-			pages.Add(MenuType.AddHorse, homeNav);
+			pages.Add(MenuType.Stable, homeNav);
 
 			master.PageSelectionChanged = (menuType) =>
 			{
@@ -59,7 +59,7 @@ namespace App
 	{
 		public Action<MenuType> PageSelectionChanged;
 		private Page pageSelection;
-		private MenuType menuType = MenuType.AddHorse;
+		private MenuType menuType = MenuType.Stable;
 		public Page PageSelection
 		{
 			get { return pageSelection; }
@@ -135,7 +135,7 @@ namespace App
 					case MenuType.NewsFeed:
 						PageSelection = new NewsFeedView();
 						break;
-					case MenuType.AddHorse:
+					case MenuType.Stable:
 						PageSelection = new HorseView();
 						break;
 					default:

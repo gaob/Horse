@@ -5,7 +5,7 @@ namespace App
 {
 	public enum MenuType
 	{
-		AddHorse,
+		Stable,
 		NewsFeed,
 		LogOut
 	}
@@ -14,7 +14,7 @@ namespace App
 	{
 		public MenuItem ()
 		{
-			MenuType = MenuType.AddHorse;
+			MenuType = MenuType.Stable;
 		}
 
 		//Base fields

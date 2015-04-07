@@ -20,8 +20,8 @@ namespace App
 			MenuItems.Add(new MenuItem
 				{
 					Id = 0,
-					Title = "Add Horse",
-					MenuType = MenuType.AddHorse,
+					Title = me.horse_id != string.Empty ? me.horse_id : "Add Horse",
+					MenuType = MenuType.Stable,
 					Icon = "about.png"
 				});
 			MenuItems.Add(new MenuItem
