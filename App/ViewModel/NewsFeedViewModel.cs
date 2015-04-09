@@ -13,7 +13,7 @@ namespace App
 	{
 		public NewsFeedViewModel ()
 		{
-			Title = "Blog";
+			Title = "News Feed";
 			Icon = "blog.png";
 		}
 

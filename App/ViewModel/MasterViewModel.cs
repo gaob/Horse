@@ -11,6 +11,7 @@ namespace App
 		private MeVM itsMe { get; set; }
 		public string pic_url { get { return itsMe.Pic_url; } }
 		public string name {get { return itsMe.Name; } }
+		public string horse_id { get { return itsMe.Horse_id; } }
 
 		public MasterViewModel(MeVM me)
 		{

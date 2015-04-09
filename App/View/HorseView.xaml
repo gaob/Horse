@@ -6,24 +6,57 @@
 			 Icon="{Binding Icon}"
 			 IsBusy="{Binding IsBusy}">
 	<ContentPage.Content>
-	  <StackLayout>
-	    <Button x:Name="GetB"
-	    		Text="Click Me!"
-	            HorizontalOptions="CenterAndExpand"
-	            VerticalOptions="CenterAndExpand"
-	            HeightRequest="100"
-	            WidthRequest="100"
-	            Clicked="OnGetClicked" />
-	   	<Label x:Name="valueLabel"
-	           Text="A simple Label"
-	           FontSize="Large"
-	           HorizontalOptions="Center"
-	           VerticalOptions="Center" />
-	    <Image x:Name="image"
-	    	   HorizontalOptions="CenterAndExpand"
-	           VerticalOptions="CenterAndExpand"
-	           HeightRequest="100"
-	           WidthRequest="100"/>
-	  </StackLayout>
+	  	<ScrollView VerticalOptions="FillAndExpand">
+	  		<StackLayout Orientation="Vertical">
+			    <Image x:Name="image"></Image>
+			    <StackLayout Orientation="Horizontal">
+			    	<Button Text="Take Photo"
+			    			Command="{Binding TakePhotoCommand}"
+			    			HorizontalOptions="FillAndExpand"/>
+			    	<Button Text="Pick Photo"
+			    			Clicked="OnPickPhotoClicked"
+			    			HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <StackLayout Orientation="Horizontal">
+					<Label Text="Name"
+						   HorizontalOptions="Fill"/>
+					<Entry Text="{Binding Name}"
+						   HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <StackLayout Orientation="Horizontal">
+					<Label Text="Gender"
+						   HorizontalOptions="Fill"/>
+					<Entry Text="{Binding Gender}"
+						   HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <StackLayout Orientation="Horizontal">
+					<Label Text="Year"
+						   HorizontalOptions="Fill"/>
+					<Entry Text="{Binding Year}"
+						   HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <StackLayout Orientation="Horizontal">
+					<Label Text="Breed"
+						   HorizontalOptions="Fill"/>
+					<Entry Text="{Binding Breed}"
+						   HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <StackLayout Orientation="Horizontal">
+					<Label Text="Registered"
+						   HorizontalOptions="Fill"/>
+					<Entry Text="{Binding Registered}"
+						   HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+				<Label Text="Description"/>
+				<Editor Text="{Binding Description}"
+						VerticalOptions="FillAndExpand"/>
+				<Label Text="{Binding Error}"/>
+			   	<Label x:Name="valueLabel"
+			           Text="A simple Label"
+			           FontSize="Large"
+			           HorizontalOptions="Center"
+			           VerticalOptions="Center" />
+		   	</StackLayout>
+	    </ScrollView>
 	</ContentPage.Content>
 </ContentPage>

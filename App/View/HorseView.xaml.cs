@@ -11,12 +11,28 @@ namespace App
 	{
 		private IMobileServiceTable<HorseItem> HorseTable;
 
-		public HorseView ()
+		private HorseViewModel ViewModel
 		{
-			InitializeComponent ();
+			get { return BindingContext as HorseViewModel; }
 		}
 
-		async void OnGetClicked(object sender, EventArgs args)
+		public HorseView (string theID)
+		{
+			InitializeComponent ();
+
+			BindingContext = new HorseViewModel (theID);
+		}
+
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+			if (ViewModel == null || !ViewModel.CanLoadMore || ViewModel.IsBusy)
+				return;
+
+			await ViewModel.LoadValues ();
+		}
+
+		async void OnPickPhotoClicked(object sender, EventArgs args)
 		{
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
