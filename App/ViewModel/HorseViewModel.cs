@@ -25,6 +25,14 @@ namespace App
 			set { SetProperty (ref name, value, "Name");}
 		}
 
+		private string pic_url = string.Empty;
+
+		public string Pic_url
+		{
+			get { return pic_url; }
+			set { SetProperty (ref pic_url, value, "Pic_url");}
+		}
+
 		private string gender = string.Empty;
 
 		public string Gender
@@ -83,14 +91,29 @@ namespace App
 			try{
 				IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
 
-				HorseItem horse = await HorseTable.LookupAsync(Id);
+				HorseItem horse = null;
 
-				Name = horse.Name;
-				Gender = horse.Gender;
-				Year = horse.Year;
-				Breed = horse.Breed;
-				Registered = horse.Registered;
-				Description = horse.Description;
+				if (Id != string.Empty) {
+					horse = await HorseTable.LookupAsync(Id);
+				}
+
+				if (horse != null) {
+					Name = horse.Name;
+					Gender = horse.Gender;
+					Year = horse.Year;
+					Breed = horse.Breed;
+					Registered = horse.Registered;
+					Description = horse.Description;
+					Pic_url = horse.Pic_url;
+				} else {
+					Name = string.Empty;
+					Gender = string.Empty;
+					Year = DateTime.Now.Year;
+					Breed = string.Empty;
+					Registered = string.Empty;
+					Description = string.Empty;
+					Pic_url = "http://rlv.zcache.co.uk/cartoon_norwegian_fjord_horse_cake_topper-r63a7a1509eae49d9a9203627eb8ea1c8_fupmp_8byvr_324.jpg";
+				}
 
 				loaded = true;
 			} catch (Exception ex) {

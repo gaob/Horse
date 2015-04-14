@@ -14,7 +14,8 @@
 	<ContentPage.Content>
 	  	<ScrollView VerticalOptions="FillAndExpand">
 	  		<StackLayout Orientation="Vertical">
-			    <Image x:Name="image"></Image>
+			    <Image x:Name="image"
+			    	   Source="{Binding Pic_url}"></Image>
 			    <StackLayout Orientation="Horizontal">
 			    	<Button Text="Take Photo"
 			    			Clicked="OnTakePhotoClicked"
