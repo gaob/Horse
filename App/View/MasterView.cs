@@ -136,7 +136,7 @@ namespace App
 						PageSelection = new NewsFeedView();
 						break;
 					case MenuType.Stable:
-						PageSelection = new HorseView(viewModel.horse_id);
+						PageSelection = new HorseView(viewModel.id, viewModel.horse_id);
 						break;
 					default:
 						PageSelection = new UnevenRowsXaml();

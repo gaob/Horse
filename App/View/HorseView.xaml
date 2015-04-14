@@ -58,6 +58,9 @@
 				<Label Text="Description"/>
 				<Editor Text="{Binding Description}"
 						VerticalOptions="FillAndExpand"/>
+			    <Button Text="Save"
+			    		Command="{Binding SaveCommand}"
+			    		HorizontalOptions="FillAndExpand"/>
 				<Label Text="{Binding Error}"/>
 			   	<Label x:Name="valueLabel"
 			           Text="A simple Label"

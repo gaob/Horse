@@ -16,11 +16,11 @@ namespace App
 			get { return BindingContext as HorseViewModel; }
 		}
 
-		public HorseView (string theID)
+		public HorseView (string owner_id, string theID)
 		{
 			InitializeComponent ();
 
-			BindingContext = new HorseViewModel (theID);
+			BindingContext = new HorseViewModel (owner_id, theID);
 		}
 
 		protected override async void OnAppearing()

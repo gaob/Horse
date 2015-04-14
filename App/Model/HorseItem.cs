@@ -25,6 +25,7 @@ namespace App
 		[JsonProperty(PropertyName = "Description")]
 		public string Description { get; set; }
 
+		/*
 		public HorseItem (JObject theObject)
 		{
 			Name = "New Horse";
@@ -36,5 +37,6 @@ namespace App
 			Registered = "HA";
 			Description = "No";
 		}
+		*/
 	}
 }

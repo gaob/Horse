@@ -1,20 +1,59 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace App
 {
 	public class HorseViewModel : BaseViewModel
 	{
 		private string Id { get; set;}
+		private string owner_id { get; set; }
 		private bool loaded { get; set; }
+		private HorseItem horse { get; set; }
 
-		public HorseViewModel (string theID)
+		public HorseViewModel (string the_owner_id, string theID)
 		{
 			Title = "Stable";
 			Icon = "blog.png";
 			Id = theID;
+			owner_id = the_owner_id;
 			loaded = false;
+			horse = null;
+
+			this.SaveCommand = new Command (async (nothing) => {
+				if (horse == null) {
+					horse = new HorseItem();
+					horse.Name = Name;
+					horse.Pic_url = Pic_url;
+					horse.Owner_id = owner_id;
+					horse.Gender = Gender;
+					horse.Year = Year;
+					horse.Breed = Breed;
+					horse.Registered = Registered;
+					horse.Description = Description;
+
+					IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
+
+					await HorseTable.InsertAsync(horse);
+
+					Id = horse.Id;
+				} else {
+					horse.Name = Name;
+					horse.Pic_url = Pic_url;
+					horse.Owner_id = owner_id;
+					horse.Gender = Gender;
+					horse.Year = Year;
+					horse.Breed = Breed;
+					horse.Registered = Registered;
+					horse.Description = Description;
+
+					IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
+
+					await HorseTable.UpdateAsync(horse);
+				}
+			});
 		}
 
 		private string name = string.Empty;
@@ -81,6 +120,8 @@ namespace App
 			set { SetProperty (ref error, value, "Error");}
 		}
 
+		public ICommand SaveCommand { protected set; get; }
+
 		public async Task LoadValues()
 		{
 			if (IsBusy || loaded)
@@ -88,10 +129,8 @@ namespace App
 
 			IsBusy = true;
 
-			try{
+			try {
 				IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
-
-				HorseItem horse = null;
 
 				if (Id != string.Empty) {
 					horse = await HorseTable.LookupAsync(Id);
