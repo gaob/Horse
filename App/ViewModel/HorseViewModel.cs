@@ -33,7 +33,13 @@ namespace App
 			set { SetProperty (ref gender, value, "Gender");}
 		}
 
-		//Add Year
+		private int year = 0;
+
+		public int Year
+		{
+			get { return year; }
+			set { SetProperty (ref year, value, "Year");}
+		}
 
 		private string breed = string.Empty;
 
@@ -81,6 +87,7 @@ namespace App
 
 				Name = horse.Name;
 				Gender = horse.Gender;
+				Year = horse.Year;
 				Breed = horse.Breed;
 				Registered = horse.Registered;
 				Description = horse.Description;

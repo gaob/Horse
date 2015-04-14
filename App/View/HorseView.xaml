@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:App;assembly=App"
 			 x:Class="App.HorseView"
 			 Title="{Binding Title}"
 			 Icon="{Binding Icon}"
 			 IsBusy="{Binding IsBusy}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+		    <local:IntConverter x:Key="intConverter"/>>
+		</ResourceDictionary>
+	</ContentPage.Resources>
 	<ContentPage.Content>
 	  	<ScrollView VerticalOptions="FillAndExpand">
 	  		<StackLayout Orientation="Vertical">
@@ -32,8 +38,9 @@
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Year"
 						   HorizontalOptions="Fill"/>
-					<Entry Text="{Binding Year}"
-						   HorizontalOptions="FillAndExpand"/>
+					<Entry Text="{Binding Path=Year, Converter={StaticResource intConverter}}"
+						   HorizontalOptions="FillAndExpand"
+						   Keyboard="Numeric"/>
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Breed"
