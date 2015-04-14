@@ -32,6 +32,48 @@ namespace App
 			await ViewModel.LoadValues ();
 		}
 
+		async void OnTakePhotoClicked(object sender, EventArgs args)
+		{
+			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
+			{
+				valueLabel.Text = "Wrong!";
+			}
+			else
+			{
+				try
+				{
+					if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+					{
+						await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+						return;
+					}
+
+					var file = await CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
+						{
+
+							Directory = "Sample",
+							Name = "test.jpg"
+						});
+
+					if (file == null)
+						return;
+
+					var stream = file.GetStream();
+
+					byte[] imageBytes = ReadFully(stream);
+
+					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+
+					file.Dispose();
+				}
+				catch (Exception ex)
+				{
+					// Display the exception message for the demo
+					valueLabel.Text = ex.Message;
+				}
+			}
+		}
+
 		async void OnPickPhotoClicked(object sender, EventArgs args)
 		{
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
@@ -42,13 +84,11 @@ namespace App
 			{
 				try
 				{
-					/*
-					if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+					if (!CrossMedia.Current.IsPickPhotoSupported)
 					{
-						await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
+						await DisplayAlert("Photos Not Supported", ":( Permission not granted to photos.", "OK");
 						return;
 					}
-					*/
 
 					var file = await CrossMedia.Current.PickPhotoAsync();
 

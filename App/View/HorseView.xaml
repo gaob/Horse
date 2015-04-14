@@ -11,7 +11,7 @@
 			    <Image x:Name="image"></Image>
 			    <StackLayout Orientation="Horizontal">
 			    	<Button Text="Take Photo"
-			    			Command="{Binding TakePhotoCommand}"
+			    			Clicked="OnTakePhotoClicked"
 			    			HorizontalOptions="FillAndExpand"/>
 			    	<Button Text="Pick Photo"
 			    			Clicked="OnPickPhotoClicked"
