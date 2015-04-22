@@ -9,8 +9,6 @@ namespace App
 {
 	public partial class HorseView : ContentPage
 	{
-		private IMobileServiceTable<HorseItem> HorseTable;
-
 		private HorseViewModel ViewModel
 		{
 			get { return BindingContext as HorseViewModel; }
@@ -50,7 +48,6 @@ namespace App
 
 					var file = await CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
 						{
-
 							Directory = "Sample",
 							Name = "test.jpg"
 						});
@@ -121,6 +118,7 @@ namespace App
 			}
 		}
 
+		//Check another copy method
 		public static byte[] ReadFully(Stream input) {
 			byte[] buffer = new byte[16*1024];
 			using(MemoryStream ms = new MemoryStream()) {

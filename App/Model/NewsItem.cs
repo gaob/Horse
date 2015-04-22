@@ -6,9 +6,6 @@ namespace App
 {
 	public class NewsItem : INotifyPropertyChanged
 	{
-
-
-
 		public string Description { get; set; }
 		public string Link { get; set; }
 		private string publishDate;
