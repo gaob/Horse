@@ -39,7 +39,6 @@ namespace App
 			IsBusy = true;
 
 			try{
-				NewsItems.Clear();
 				News aNews = new News();
 
 				aNews.Author_id = "01";
@@ -51,8 +50,7 @@ namespace App
 
 				NewsItems.Add(aNews);
 			} catch (Exception ex) {
-				var page = new ContentPage();
-				/*var result = */await page.DisplayAlert ("Error", "Unable to load blog.", "OK");
+				string str = ex.Message;
 			}
 
 			IsBusy = false;

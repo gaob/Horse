@@ -16,6 +16,10 @@ namespace App
 		{
 			InitializeComponent ();
 
+			ToolbarItems.Add (new ToolbarItem ("Filter", "blog.png", async () => {
+				await this.Navigation.PushAsync(new HorseView("1389485558036097", "82bea11321be4e3681211da7d6a1b7d4"));
+			}));
+
 			BindingContext = new NewsViewModel ();
 
 			/*
