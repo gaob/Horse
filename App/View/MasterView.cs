@@ -133,7 +133,7 @@ namespace App
 				switch (menuItem.MenuType)
 				{
 					case MenuType.NewsFeed:
-						PageSelection = new NewsView();
+						PageSelection = new NewsView(viewModel.id, viewModel.horse_id);
 						break;
 					case MenuType.Stable:
 						PageSelection = new HorseView(viewModel.id, viewModel.horse_id);

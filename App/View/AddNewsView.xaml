@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="App.AddNewsView"
+			 Title="{Binding Title}"
+			 Icon="{Binding Icon}"
+			 IsBusy="{Binding IsBusy}">
+	<ContentPage.Content>
+	  	<ScrollView VerticalOptions="FillAndExpand">
+	  		<StackLayout Orientation="Vertical">
+				<Editor Text="{Binding Text}"
+						VerticalOptions="FillAndExpand"/>
+			    <Image x:Name="image"
+			    	   Source="{Binding Pic_url}"></Image>
+			    <StackLayout Orientation="Horizontal">
+			    	<Button Text="Take Photo"
+			    			Clicked="OnTakePhotoClicked"
+			    			HorizontalOptions="FillAndExpand"/>
+			    	<Button Text="Pick Photo"
+			    			Clicked="OnPickPhotoClicked"
+			    			HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <Button Text="Post"
+			    		Command="{Binding PostCommand}"
+			    		HorizontalOptions="FillAndExpand"/>
+		   	</StackLayout>
+	    </ScrollView>
+	</ContentPage.Content>
+</ContentPage>
