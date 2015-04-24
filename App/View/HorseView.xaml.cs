@@ -59,7 +59,11 @@ namespace App
 
 					byte[] imageBytes = ReadFully(stream);
 
-					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+
+					await RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "test_take.jpg");
+
+					image.Source = "https://dotnet3.blob.core.windows.net/dotnet3/test_take.jpg";
 
 					file.Dispose();
 				}
@@ -96,7 +100,11 @@ namespace App
 
 					byte[] imageBytes = ReadFully(stream);
 
-					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+
+					await RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "test_pick.jpg");
+
+					image.Source = "https://dotnet3.blob.core.windows.net/dotnet3/test_pick.jpg";
 
 					file.Dispose();
 
