@@ -27,7 +27,6 @@ namespace App
 				if (horse == null) {
 					horse = new HorseItem();
 					horse.Name = Name;
-					horse.Pic_url = Pic_url;
 					horse.Owner_id = owner_id;
 					horse.Gender = Gender;
 					horse.Year = Year;
@@ -47,7 +46,6 @@ namespace App
 					RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
 				} else {
 					horse.Name = Name;
-					horse.Pic_url = Pic_url;
 					horse.Owner_id = owner_id;
 					horse.Gender = Gender;
 					horse.Year = Year;
