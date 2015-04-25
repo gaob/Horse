@@ -39,6 +39,9 @@ namespace App
 					await HorseTable.InsertAsync(horse);
 
 					Id = horse.Id;
+
+					MeVM.Horse_id = Id;
+					MeVM.Horse_name = Name;
 				} else {
 					horse.Name = Name;
 					horse.Pic_url = Pic_url;
@@ -52,6 +55,7 @@ namespace App
 					IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
 
 					await HorseTable.UpdateAsync(horse);
+					MeVM.Horse_name = Name;
 				}
 			});
 		}
