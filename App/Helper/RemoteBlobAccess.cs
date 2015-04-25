@@ -84,7 +84,7 @@ namespace App
 		{
 			try
 			{
-				JToken payload = JObject.FromObject( new { filename = fileName });
+				JToken payload = JObject.FromObject( new { filename = Path.GetFileNameWithoutExtension(fileName) });
 
 				var resultJson = await App.ServiceClient.InvokeApiAsync("queue", payload);
 
