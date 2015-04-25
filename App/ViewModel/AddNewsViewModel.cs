@@ -10,6 +10,7 @@ namespace App
 		private string AuthorID { get; set;}
 		private string HorseID { get; set; }
 		private News news { get; set; }
+		private byte[] imageBytes { get; set; }
 
 		public AddNewsViewModel (string author_id, string horse_id)
 		{
@@ -21,6 +22,11 @@ namespace App
 			this.PostCommand = new Command (async (nothing) => {
 				//Post something.
 			});
+		}
+
+		public void passImageBytes(byte[] theImageBytes)
+		{
+			imageBytes = theImageBytes;
 		}
 
 		private string text = string.Empty;
