@@ -22,6 +22,7 @@ namespace App
 			owner_id = the_owner_id;
 			loaded = false;
 			horse = null;
+			imageBytes = null;
 
 			this.SaveCommand = new Command (async (nothing) => {
 				if (horse == null) {
@@ -43,7 +44,9 @@ namespace App
 					MeVM.Horse_id = Id;
 					MeVM.Horse_name = Name;
 
-					RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
+					if (imageBytes != null) {
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
+					}
 				} else {
 					horse.Name = Name;
 					horse.Owner_id = owner_id;
@@ -57,6 +60,10 @@ namespace App
 
 					await HorseTable.UpdateAsync(horse);
 					MeVM.Horse_name = Name;
+
+					if (imageBytes != null) {
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
+					}
 				}
 			});
 		}

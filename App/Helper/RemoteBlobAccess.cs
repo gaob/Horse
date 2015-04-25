@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Globalization;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -71,7 +72,28 @@ namespace App
 		{
 
 			string containerName = AzureStorageConstants.ContainerName;
-			return await PutBlob_async(containerName, fileName, blobContent);
+
+			string Etag = await PutBlob_async(containerName, fileName, blobContent);
+
+			PutQueue_async (fileName);
+
+			return Etag;
+		}
+
+		private static async Task PutQueue_async(string fileName)
+		{
+			try
+			{
+				JToken payload = JObject.FromObject( new { filename = fileName });
+
+				var resultJson = await App.ServiceClient.InvokeApiAsync("queue", payload);
+
+				Debug.Assert(resultJson.Value<string>("filename") == fileName);
+			}
+			catch (Exception ex)
+			{
+				string str = ex.Message;
+			}
 		}
 
 		private static async Task<string> PutBlob_async(String containerName, String blobName, Byte[] blobContent)
