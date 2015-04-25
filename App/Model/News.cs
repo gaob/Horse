@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -8,6 +9,8 @@ namespace App
 		public News ()
 		{
 		}
+
+		private string id;
 
 		private string author_id = string.Empty;
 
@@ -53,5 +56,16 @@ namespace App
 		public DateTime PublishTime { get; set; }
 
 		public string Horse_id { get; set; }
+
+		public JToken ToJToken()
+		{
+			return JObject.FromObject (new { author_id = Author_id, 
+											 author_name = Author_name,
+											 author_pic_url = Author_pic_url,
+											 text = Text,
+											 pic_url = Pic_url,
+											 publishtime = PublishTime.ToString (),
+											 horse_id = Horse_id});
+		}
 	}
 }

@@ -14,11 +14,11 @@ namespace App
 			get { return BindingContext as AddNewsViewModel; }
 		}
 
-		public AddNewsView (string author_id, string horse_id)
+		public AddNewsView (string author_id, string horse_id, string author_name, string author_pic_url)
 		{
 			InitializeComponent ();
 
-			BindingContext = new AddNewsViewModel (author_id, horse_id);
+			BindingContext = new AddNewsViewModel (author_id, horse_id, author_name, author_pic_url);
 		}
 
 		protected override async void OnAppearing()
