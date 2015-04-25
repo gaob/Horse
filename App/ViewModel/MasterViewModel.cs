@@ -22,7 +22,7 @@ namespace App
 			MenuItems.Add(new MenuItem
 				{
 					Id = 0,
-					Title = me.Horse_name != string.Empty ? me.Horse_name : "Add Horse",
+					Title = "Stable",
 					MenuType = MenuType.Stable,
 					Icon = "about.png"
 				});
