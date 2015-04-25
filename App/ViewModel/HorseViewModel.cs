@@ -12,6 +12,7 @@ namespace App
 		private string owner_id { get; set; }
 		private bool loaded { get; set; }
 		private HorseItem horse { get; set; }
+		private byte[] imageBytes { get; set; }
 
 		public HorseViewModel (string the_owner_id, string theID)
 		{
@@ -42,6 +43,8 @@ namespace App
 
 					MeVM.Horse_id = Id;
 					MeVM.Horse_name = Name;
+
+					RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
 				} else {
 					horse.Name = Name;
 					horse.Pic_url = Pic_url;
@@ -58,6 +61,11 @@ namespace App
 					MeVM.Horse_name = Name;
 				}
 			});
+		}
+
+		public void passImageBytes(byte[] theImageBytes)
+		{
+			imageBytes = theImageBytes;
 		}
 
 		private string name = string.Empty;
@@ -147,7 +155,7 @@ namespace App
 					Breed = horse.Breed;
 					Registered = horse.Registered;
 					Description = horse.Description;
-					Pic_url = horse.Pic_url;
+					Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/" + Id + ".jpg";
 				} else {
 					Name = string.Empty;
 					Gender = string.Empty;

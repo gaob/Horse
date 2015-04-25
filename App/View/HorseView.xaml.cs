@@ -48,8 +48,8 @@ namespace App
 
 					var file = await CrossMedia.Current.TakePhotoAsync(new Media.Plugin.Abstractions.StoreCameraMediaOptions
 						{
-							Directory = "Sample",
-							Name = "test.jpg"
+							Directory = "temp",
+							Name = "takenPhoto.jpg"
 						});
 
 					if (file == null)
@@ -59,11 +59,9 @@ namespace App
 
 					byte[] imageBytes = PhotoHelper.ReadFully(stream);
 
-					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+					ViewModel.passImageBytes(imageBytes);
 
-					await RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "test_take.jpg");
-
-					image.Source = "https://dotnet3.blob.core.windows.net/dotnet3/test_take.jpg";
+					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
 
 					file.Dispose();
 				}
@@ -100,11 +98,9 @@ namespace App
 
 					byte[] imageBytes = PhotoHelper.ReadFully(stream);
 
-					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
+					ViewModel.passImageBytes(imageBytes);
 
-					await RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "test_pick.jpg");
-
-					image.Source = "https://dotnet3.blob.core.windows.net/dotnet3/test_pick.jpg";
+					image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
 
 					file.Dispose();
 				}
