@@ -57,7 +57,7 @@ namespace App
 
 					var stream = file.GetStream();
 
-					byte[] imageBytes = ReadFully(stream);
+					byte[] imageBytes = PhotoHelper.ReadFully(stream);
 
 					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
 
@@ -98,7 +98,7 @@ namespace App
 
 					var stream = file.GetStream();
 
-					byte[] imageBytes = ReadFully(stream);
+					byte[] imageBytes = PhotoHelper.ReadFully(stream);
 
 					//image.Source = ImageSource.FromStream(() => new MemoryStream(imageBytes));
 
@@ -113,18 +113,6 @@ namespace App
 					// Display the exception message for the demo
 					valueLabel.Text = ex.Message;
 				}
-			}
-		}
-
-		//Check another copy method
-		public static byte[] ReadFully(Stream input) {
-			byte[] buffer = new byte[16*1024];
-			using(MemoryStream ms = new MemoryStream()) {
-				int read;
-				while((read = input.Read(buffer, 0, buffer.Length)) > 0) {
-					ms.Write(buffer, 0, read);
-				}
-				return ms.ToArray();
 			}
 		}
 	}
