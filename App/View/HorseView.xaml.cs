@@ -107,16 +107,6 @@ namespace App
 					image.Source = "https://dotnet3.blob.core.windows.net/dotnet3/test_pick.jpg";
 
 					file.Dispose();
-
-					/*
-					HorseTable = App.ServiceClient.GetTable<HorseItem> ();
-
-					HorseItem aHorse = new HorseItem (null);
-
-					await HorseTable.InsertAsync (aHorse);
-
-					valueLabel.Text = "Nothing returned!";
-					*/
 				}
 				catch (Exception ex)
 				{

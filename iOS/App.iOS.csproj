@@ -151,8 +151,8 @@
     <BundleResource Include="Resources\slideout.png" />
     <BundleResource Include="Resources\slideout%402x.png" />
     <BundleResource Include="Resources\about.png" />
-    <BundleResource Include="Resources\blog.png" />
     <BundleResource Include="Resources\blog%402x.png" />
+    <BundleResource Include="Resources\blog.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
