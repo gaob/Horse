@@ -52,6 +52,6 @@ namespace App
 		//Internal field
 		public DateTime PublishTime { get; set; }
 
-		//Add horse_id
+		public string Horse_id { get; set; }
 	}
 }

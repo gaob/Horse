@@ -67,7 +67,6 @@ namespace App
 				}
 				catch (Exception ex)
 				{
-					// Display the exception message for the demo
 					valueLabel.Text = ex.Message;
 				}
 			}
@@ -106,7 +105,6 @@ namespace App
 				}
 				catch (Exception ex)
 				{
-					// Display the exception message for the demo
 					valueLabel.Text = ex.Message;
 				}
 			}
