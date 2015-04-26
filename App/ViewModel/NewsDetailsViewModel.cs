@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
 
 namespace App
 {
@@ -101,7 +102,7 @@ namespace App
 					aComment.Author_id = comment_author_id;
 					aComment.Author_name = comment_author_name;
 					aComment.NewsID = news_id;
-					aComment.Text = text;
+					aComment.Text = yourcomment;
 					aComment.PublishTime = DateTime.Now;
 					aComment.Liked = false;
 
@@ -127,23 +128,18 @@ namespace App
 			IsBusy = true;
 
 			try{
-				/*
-				NewsItems.Clear();
+				CommentsItems.Clear();
 
-				var resultNews = await App.ServiceClient.InvokeApiAsync("table", HttpMethod.Get, null);
+				var resultComments = await App.ServiceClient.InvokeApiAsync("table/comment/" + news_id, HttpMethod.Get, null);
 
-				if (resultNews.HasValues)
+				if (resultComments.HasValues)
 				{
-					foreach (var item in resultNews)
+					foreach (var item in resultComments)
 					{
 						if (item is JObject) {
-							News anNews = new News(item as JObject);
-
-							if (DateTime.Now>anNews.PublishTime.AddMinutes(1)) {
-								NewsItems.Add(new News(item as JObject));
-							}
+							CommentsItems.Add(new Comment(item as JObject));
 						} else {
-							throw new Exception("Unexpected type in resultNews");
+							throw new Exception("Unexpected type in resultComments");
 						}
 					}
 				}
@@ -151,7 +147,6 @@ namespace App
 				{
 					throw new Exception("Nothing returned!");
 				}
-				*/
 			} catch (Exception ex) {
 				string str = ex.Message;
 			}

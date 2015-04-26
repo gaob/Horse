@@ -9,7 +9,7 @@ namespace App
 		{
 		}
 
-		private string id;
+		private string Id;
 
 		private string author_id = string.Empty;
 
@@ -38,6 +38,17 @@ namespace App
 		public DateTime PublishTime { get; set; }
 		public string NewsID { get; set; }
 		public bool Liked { get; set; }
+
+		public Comment(JObject theObject)
+		{
+			Id = theObject.Value<string> ("id");
+			author_id = theObject.Value<string> ("author_id");
+			author_name = theObject.Value<string> ("author_name");
+			text = theObject.Value<string> ("text");
+			PublishTime = DateTime.Parse (theObject.Value<string> ("publishtime"));
+			NewsID = theObject.Value<string> ("news_id");
+			Liked = bool.Parse (theObject.Value<string> ("liked"));
+		}
 
 		public JToken ToJToken()
 		{
