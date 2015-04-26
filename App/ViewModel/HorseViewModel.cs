@@ -45,7 +45,7 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
-						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse_" + Id + ".jpg");
 					}
 				} else {
 					horse.Name = Name;
@@ -62,7 +62,7 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
-						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, Id + ".jpg");
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse_" + Id + ".jpg");
 					}
 				}
 			});
@@ -160,7 +160,7 @@ namespace App
 					Breed = horse.Breed;
 					Registered = horse.Registered;
 					Description = horse.Description;
-					Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/" + Id + ".jpg";
+					Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/horse_" + Id + ".jpg";
 				} else {
 					Name = string.Empty;
 					Gender = string.Empty;

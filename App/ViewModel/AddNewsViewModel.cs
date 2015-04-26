@@ -21,18 +21,29 @@ namespace App
 			HorseID = horse_id;
 
 			this.PostCommand = new Command (async (nothing) => {
-				News aNews = new News();
-				aNews.Author_id = AuthorID;
-				aNews.Author_name = author_name;
-				aNews.Author_pic_url = author_pic_url;
-				aNews.Text = Text;
-				aNews.Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/";
-				aNews.PublishTime = DateTime.Now;
-				aNews.Horse_id = HorseID;
+				try {
+					News aNews = new News();
+					aNews.Author_id = AuthorID;
+					aNews.Author_name = author_name;
+					aNews.Author_pic_url = author_pic_url;
+					aNews.Text = Text;
+					aNews.Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/";
+					aNews.PublishTime = DateTime.Now;
+					aNews.Horse_id = HorseID;
 
-				JToken payload = aNews.ToJToken();
+					JToken payload = aNews.ToJToken();
 
-				var resultJson = await App.ServiceClient.InvokeApiAsync("table", payload);
+					var resultJson = await App.ServiceClient.InvokeApiAsync("table", payload);
+
+					string rowkey = resultJson.Value<string>("rowkey");
+
+					if (imageBytes != null) {
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "news_" + rowkey + ".jpg");
+					}
+				} catch (Exception ex)
+				{
+					string str = ex.Message;
+				}
 			});
 		}
 
