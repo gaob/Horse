@@ -34,7 +34,7 @@ namespace App
 
 					JToken payload = aNews.ToJToken();
 
-					var resultJson = await App.ServiceClient.InvokeApiAsync("table", payload);
+					var resultJson = await App.ServiceClient.InvokeApiAsync("table/news", payload);
 
 					string rowkey = resultJson.Value<string>("rowkey");
 

@@ -43,7 +43,7 @@ namespace App
 			try{
 				NewsItems.Clear();
 
-				var resultNews = await App.ServiceClient.InvokeApiAsync("table", HttpMethod.Get, null);
+				var resultNews = await App.ServiceClient.InvokeApiAsync("table/news", HttpMethod.Get, null);
 
 				if (resultNews.HasValues)
 				{
