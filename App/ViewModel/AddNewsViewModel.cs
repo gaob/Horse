@@ -12,13 +12,15 @@ namespace App
 		private string HorseID { get; set; }
 		private News news { get; set; }
 		private byte[] imageBytes { get; set; }
+		private INavigation Navigation { get; set; }
 
-		public AddNewsViewModel (string author_id, string horse_id, string author_name, string author_pic_url)
+		public AddNewsViewModel (string author_id, string horse_id, string author_name, string author_pic_url, INavigation navi)
 		{
 			Title = "Stable";
 			Icon = "blog.png";
 			AuthorID = author_id;
 			HorseID = horse_id;
+			Navigation = navi;
 
 			this.PostCommand = new Command (async (nothing) => {
 				try {
@@ -43,6 +45,8 @@ namespace App
 					}
 
 					Error = "Added";
+
+					await Navigation.PopAsync();
 				} catch (Exception ex)
 				{
 					string str = ex.Message;

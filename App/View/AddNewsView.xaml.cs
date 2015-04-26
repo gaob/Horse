@@ -18,7 +18,7 @@ namespace App
 		{
 			InitializeComponent ();
 
-			BindingContext = new AddNewsViewModel (author_id, horse_id, author_name, author_pic_url);
+			BindingContext = new AddNewsViewModel (author_id, horse_id, author_name, author_pic_url, Navigation);
 		}
 
 		protected override async void OnAppearing()

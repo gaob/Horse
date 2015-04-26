@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -37,5 +38,15 @@ namespace App
 		public DateTime PublishTime { get; set; }
 		public string NewsID { get; set; }
 		public bool Liked { get; set; }
+
+		public JToken ToJToken()
+		{
+			return JObject.FromObject (new { author_id = Author_id, 
+											 author_name = Author_name,
+											 text = Text,
+											 publishtime = PublishTime.ToString (),
+											 news_id = NewsID,
+											 liked = Liked ? "true" : "false"});
+		}
 	}
 }

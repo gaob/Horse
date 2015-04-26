@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -52,6 +53,18 @@ namespace App
 			set { SetProperty (ref yourcomment, value, "YourComment");}
 		}
 
+		private string error = string.Empty;
+
+		public string Error
+		{
+			get { return error; }
+			set { SetProperty (ref error, value, "Error");}
+		}
+
+		private string comment_author_id { get; set; }
+
+		private string comment_author_name { get; set; }
+
 		private Command loadItemsCommand;
 		/// <summary>
 		/// Command to load/refresh items
@@ -66,7 +79,7 @@ namespace App
 		public ICommand LikeCommand { protected set; get; }
 
 		public NewsDetailsViewModel (string newsID, string authorName, DateTime publishTime, string text, 
-									 string pic_url)
+									 string pic_url, string c_author_id, string c_author_name)
 		{
 			Title = "News Details";
 
@@ -75,9 +88,35 @@ namespace App
 			PublishTime = publishTime;
 			Text = text;
 			Pic_url = pic_url;
+			comment_author_id = c_author_id;
+			comment_author_name = c_author_name;
 
 			//Replace icon
 			//Icon = "blog.png";
+
+			this.PostCommand = new Command (async (nothing) => {
+				try {
+					Comment aComment = new Comment();
+
+					aComment.Author_id = comment_author_id;
+					aComment.Author_name = comment_author_name;
+					aComment.NewsID = news_id;
+					aComment.Text = text;
+					aComment.PublishTime = DateTime.Now;
+					aComment.Liked = false;
+
+					JToken payload = aComment.ToJToken();
+
+					var resultJson = await App.ServiceClient.InvokeApiAsync("table/comment", payload);
+
+					string rowkey = resultJson.Value<string>("rowkey");
+
+					Error = "Added";
+				} catch (Exception ex)
+				{
+					string str = ex.Message;
+				}
+			});
 		}
 
 		public async Task ExecuteLoadItemsCommand()

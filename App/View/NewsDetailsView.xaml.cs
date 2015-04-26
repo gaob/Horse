@@ -12,7 +12,7 @@ namespace App
 			get { return BindingContext as NewsDetailsViewModel; }
 		}
 
-		public NewsDetailsView (News theNews)
+		public NewsDetailsView (News theNews, string author_id, string author_name)
 		{
 			InitializeComponent ();
 
@@ -20,7 +20,9 @@ namespace App
 													   theNews.Author_name, 
 													   theNews.PublishTime,
 													   theNews.Text,
-													   theNews.Pic_url);
+													   theNews.Pic_url,
+													   author_id,
+													   author_name);
 		}
 
 		protected override async void OnAppearing()
