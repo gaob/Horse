@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
 
 namespace App
 {
@@ -39,6 +41,27 @@ namespace App
 			IsBusy = true;
 
 			try{
+				NewsItems.Clear();
+
+				var resultNews = await App.ServiceClient.InvokeApiAsync("table", HttpMethod.Get, null);
+
+				if (resultNews.HasValues)
+				{
+					foreach (var item in resultNews)
+					{
+						if (item is JObject) {
+							NewsItems.Add(new News(item as JObject));
+						} else {
+							throw new Exception("Unexpected type in resultNews");
+						}
+					}
+				}
+				else 
+				{
+					throw new Exception("Nothing returned!");
+				}
+
+				/*
 				News aNews = new News();
 
 				aNews.Author_id = "01";
@@ -49,6 +72,7 @@ namespace App
 				aNews.PublishTime = DateTime.Now;
 
 				NewsItems.Add(aNews);
+				*/
 			} catch (Exception ex) {
 				string str = ex.Message;
 			}

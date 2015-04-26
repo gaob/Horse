@@ -22,6 +22,7 @@ namespace App
 
 			this.PostCommand = new Command (async (nothing) => {
 				try {
+					//To prevent add when no image present.
 					News aNews = new News();
 					aNews.Author_id = AuthorID;
 					aNews.Author_name = author_name;
@@ -38,7 +39,7 @@ namespace App
 					string rowkey = resultJson.Value<string>("rowkey");
 
 					if (imageBytes != null) {
-						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "news_" + rowkey + ".jpg");
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "news-" + rowkey + ".jpg");
 					}
 				} catch (Exception ex)
 				{

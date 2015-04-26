@@ -57,6 +57,18 @@ namespace App
 
 		public string Horse_id { get; set; }
 
+		public News(JObject theObject)
+		{
+			id = theObject.Value<string> ("id");
+			author_id = theObject.Value<string> ("author_id");
+			author_name = theObject.Value<string> ("author_name");
+			author_pic_url = theObject.Value<string> ("author_pic_url");
+			text = theObject.Value<string> ("text");
+			pic_url = theObject.Value<string> ("pic_url");
+			PublishTime = DateTime.Parse (theObject.Value<string> ("publishtime"));
+			Horse_id = theObject.Value<string> ("horse_id");
+		}
+
 		public JToken ToJToken()
 		{
 			return JObject.FromObject (new { author_id = Author_id, 

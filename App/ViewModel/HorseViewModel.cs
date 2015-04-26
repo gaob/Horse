@@ -26,6 +26,7 @@ namespace App
 
 			this.SaveCommand = new Command (async (nothing) => {
 				if (horse == null) {
+					//Prevent add when no image present
 					horse = new HorseItem();
 					horse.Name = Name;
 					horse.Owner_id = owner_id;
@@ -45,7 +46,7 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
-						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse_" + Id + ".jpg");
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
 					}
 				} else {
 					horse.Name = Name;
@@ -62,7 +63,7 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
-						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse_" + Id + ".jpg");
+						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
 					}
 				}
 			});
