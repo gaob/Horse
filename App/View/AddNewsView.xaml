@@ -23,6 +23,7 @@
 			    <Button Text="Post"
 			    		Command="{Binding PostCommand}"
 			    		HorizontalOptions="FillAndExpand"/>
+			    <Label Text="{Binding Error}"/>
 		   	</StackLayout>
 	    </ScrollView>
 	</ContentPage.Content>

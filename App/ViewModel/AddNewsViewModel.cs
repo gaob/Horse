@@ -28,7 +28,7 @@ namespace App
 					aNews.Author_name = author_name;
 					aNews.Author_pic_url = author_pic_url;
 					aNews.Text = Text;
-					aNews.Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/";
+					aNews.Pic_url = string.Empty;
 					aNews.PublishTime = DateTime.Now;
 					aNews.Horse_id = HorseID;
 
@@ -41,6 +41,8 @@ namespace App
 					if (imageBytes != null) {
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "news-" + rowkey + ".jpg");
 					}
+
+					Error = "Added";
 				} catch (Exception ex)
 				{
 					string str = ex.Message;
@@ -67,6 +69,14 @@ namespace App
 		{
 			get { return pic_url; }
 			set { SetProperty (ref pic_url, value, "Pic_url");}
+		}
+
+		private string error = string.Empty;
+
+		public string Error
+		{
+			get { return error; }
+			set { SetProperty (ref error, value, "Error");}
 		}
 
 		public ICommand PostCommand { protected set; get; }

@@ -48,6 +48,8 @@ namespace App
 					if (imageBytes != null) {
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
 					}
+
+					Error = "Added";
 				} else {
 					horse.Name = Name;
 					horse.Owner_id = owner_id;
@@ -65,6 +67,8 @@ namespace App
 					if (imageBytes != null) {
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
 					}
+
+					Error = "Saved";
 				}
 			});
 		}
@@ -161,7 +165,7 @@ namespace App
 					Breed = horse.Breed;
 					Registered = horse.Registered;
 					Description = horse.Description;
-					Pic_url = "https://dotnet3.blob.core.windows.net/dotnet3/horse_" + Id + ".jpg";
+					Pic_url = horse.Pic_url;
 				} else {
 					Name = string.Empty;
 					Gender = string.Empty;

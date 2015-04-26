@@ -50,7 +50,11 @@ namespace App
 					foreach (var item in resultNews)
 					{
 						if (item is JObject) {
-							NewsItems.Add(new News(item as JObject));
+							News anNews = new News(item as JObject);
+
+							if (DateTime.Now>anNews.PublishTime.AddMinutes(1)) {
+								NewsItems.Add(new News(item as JObject));
+							}
 						} else {
 							throw new Exception("Unexpected type in resultNews");
 						}
@@ -60,19 +64,6 @@ namespace App
 				{
 					throw new Exception("Nothing returned!");
 				}
-
-				/*
-				News aNews = new News();
-
-				aNews.Author_id = "01";
-				aNews.Author_name = "Dancer Stark";
-				aNews.Author_pic_url = "";
-				aNews.Pic_url = "http://thumbs.dreamstime.com/z/rearing-horse-26766173.jpg";
-				aNews.Text = "This is a horse!";
-				aNews.PublishTime = DateTime.Now;
-
-				NewsItems.Add(aNews);
-				*/
 			} catch (Exception ex) {
 				string str = ex.Message;
 			}
