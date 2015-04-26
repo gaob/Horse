@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="App.NewsDetailsView"
+			 xmlns:local="clr-namespace:App;assembly=App"
+			 Title="{Binding Title}"
+			 Icon="{Binding Icon}"
+			 IsBusy="{Binding IsBusy}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+		    <local:DateTimeConverter x:Key="DateTimeConverter"/>>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.Content>
+	  	<ScrollView VerticalOptions="FillAndExpand">
+	  		<StackLayout Orientation="Vertical">
+	            <StackLayout Spacing="4"
+	                         VerticalOptions="Center">
+	                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"/>
+	                <Label Text="{Binding PublishTime, Converter={StaticResource DateTimeConverter}}" TextColor="#3498DB" FontSize="Small" LineBreakMode="NoWrap"/>
+	                <Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
+	            </StackLayout>
+	            <Image Source="{Binding Pic_url}"/>
+				<Editor Text="{Binding YourComment}"
+						VerticalOptions="FillAndExpand"/>
+			    <StackLayout Orientation="Horizontal">
+				    <Button Text="Like"
+				    		Command="{Binding LikeCommand}"
+				    		HorizontalOptions="FillAndExpand"/>
+				    <Button Text="Post"
+				    		Command="{Binding PostCommand}"
+				    		HorizontalOptions="FillAndExpand"/>
+			    </StackLayout>
+			    <Label Text="{Binding Error}"/>
+			    <ListView x:Name="listView"
+			              ItemsSource="{Binding CommentsItems}"
+			              HasUnevenRows="True"
+			              IsPullToRefreshEnabled="True"
+			              RefreshCommand="{Binding LoadItemsCommand}"
+			              IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+			      <ListView.ItemTemplate>
+			        <DataTemplate>
+			          <ViewCell>
+			              <StackLayout
+			                           Spacing="4"
+			                           VerticalOptions="Center">
+			                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"/>
+			                <Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
+			              </StackLayout>
+			          </ViewCell>
+			        </DataTemplate>
+			      </ListView.ItemTemplate>
+			    </ListView>
+		   	</StackLayout>
+	    </ScrollView>
+	</ContentPage.Content>
+</ContentPage>

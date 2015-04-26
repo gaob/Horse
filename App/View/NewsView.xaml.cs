@@ -22,16 +22,13 @@ namespace App
 
 			BindingContext = new NewsViewModel ();
 
-			/*
 			listView.ItemTapped += (sender, args) =>
 			{
 				if (listView.SelectedItem == null)
 					return;
-				//Here goes to the detail page
-				//this.Navigation.PushAsync(new BlogDetailsView(listView.SelectedItem as FeedItem));
+				this.Navigation.PushAsync(new NewsDetailsView(listView.SelectedItem as News));
 				listView.SelectedItem = null;
 			};
-			*/
 		}
 
 		protected override async void OnAppearing()

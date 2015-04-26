@@ -10,7 +10,7 @@ namespace App
 		{
 		}
 
-		private string id;
+		public string Id;
 
 		private string author_id = string.Empty;
 
@@ -59,7 +59,7 @@ namespace App
 
 		public News(JObject theObject)
 		{
-			id = theObject.Value<string> ("id");
+			Id = theObject.Value<string> ("id");
 			author_id = theObject.Value<string> ("author_id");
 			author_name = theObject.Value<string> ("author_name");
 			author_pic_url = theObject.Value<string> ("author_pic_url");
