@@ -9,7 +9,7 @@ namespace App
 		{
 		}
 
-		private string Id;
+		public string Id;
 
 		private string author_id = string.Empty;
 

@@ -112,6 +112,10 @@ namespace App
 
 					string rowkey = resultJson.Value<string>("rowkey");
 
+					aComment.Id = rowkey;
+
+					CommentsItems.Add(aComment);
+
 					Error = "Added";
 				} catch (Exception ex)
 				{
