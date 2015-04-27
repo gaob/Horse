@@ -9,6 +9,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 		    <local:DateTimeConverter x:Key="DateTimeConverter"/>>
+		    <local:IntConverter x:Key="intConverter"/>>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
@@ -28,6 +29,7 @@
 	                <RowDefinition Height="Auto"/>
 	                <RowDefinition Height="10"/>
 	                <RowDefinition Height="100"/>
+	                <RowDefinition Height="10"/>
 	              </Grid.RowDefinitions>
 	              <StackLayout
 	                           Spacing="4"
@@ -38,7 +40,7 @@
 	              </StackLayout>
 	              
 	              <Image Grid.Row="2" Source="{Binding Pic_url}" Aspect="AspectFill"/>
-
+	              <Label Grid.Row="3" Text="{Binding CommentCount, Converter={StaticResource intConverter}}" VerticalOptions="End"/>
 	            </Grid>
 	          </ViewCell>
 	        </DataTemplate>

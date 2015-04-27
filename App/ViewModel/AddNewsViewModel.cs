@@ -14,7 +14,7 @@ namespace App
 		private byte[] imageBytes { get; set; }
 		private INavigation Navigation { get; set; }
 
-		public AddNewsViewModel (string author_id, string horse_id, string author_name, string author_pic_url, INavigation navi)
+		public AddNewsViewModel (string author_id, string horse_id, string author_name, string horse_name, string author_pic_url, INavigation navi)
 		{
 			Title = "Stable";
 			Icon = "blog.png";
@@ -33,6 +33,7 @@ namespace App
 					aNews.Pic_url = string.Empty;
 					aNews.PublishTime = DateTime.Now;
 					aNews.Horse_id = HorseID;
+					aNews.Horse_name = horse_name;
 
 					JToken payload = aNews.ToJToken();
 

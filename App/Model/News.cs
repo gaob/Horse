@@ -52,10 +52,28 @@ namespace App
 			set { SetProperty (ref pic_url, value, "Pic_url");}
 		}
 
+		private string horse_name = string.Empty;
+
+		public string Horse_name
+		{
+			get { return horse_name; }
+			set { SetProperty (ref horse_name, value, "Horse_name");}
+		}
+
 		//Internal field
 		public DateTime PublishTime { get; set; }
 
 		public string Horse_id { get; set; }
+
+		public int LikeCount { get; set; }
+
+		private int comment_count = 0;
+
+		public int CommentCount
+		{
+			get { return comment_count; }
+			set { SetProperty (ref comment_count, value, "CommentCount");}
+		}
 
 		public News(JObject theObject)
 		{
@@ -67,6 +85,9 @@ namespace App
 			pic_url = theObject.Value<string> ("pic_url");
 			PublishTime = DateTime.Parse (theObject.Value<string> ("publishtime"));
 			Horse_id = theObject.Value<string> ("horse_id");
+			horse_name = theObject.Value<string> ("horse_name");
+			LikeCount = theObject.Value<int> ("like_count");
+			CommentCount = theObject.Value<int> ("comment_count");
 		}
 
 		public JToken ToJToken()
@@ -77,7 +98,8 @@ namespace App
 											 text = Text,
 											 pic_url = Pic_url,
 											 publishtime = PublishTime.ToString (),
-											 horse_id = Horse_id});
+											 horse_id = Horse_id,
+											 horse_name = Horse_name});
 		}
 	}
 }

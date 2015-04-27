@@ -12,12 +12,12 @@ namespace App
 			get { return BindingContext as NewsViewModel; }
 		}
 
-		public NewsView (string author_id, string horse_id, string author_name, string author_pic_url)
+		public NewsView (string author_id, string horse_id, string author_name, string horse_name, string author_pic_url)
 		{
 			InitializeComponent ();
 
 			ToolbarItems.Add (new ToolbarItem ("Filter", "blog.png", async () => {
-				await this.Navigation.PushAsync(new AddNewsView(author_id, horse_id, author_name, author_pic_url));
+				await this.Navigation.PushAsync(new AddNewsView(author_id, horse_id, author_name, horse_name, author_pic_url));
 			}));
 
 			BindingContext = new NewsViewModel ();
