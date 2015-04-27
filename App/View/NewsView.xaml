@@ -27,11 +27,10 @@
 	            <Grid Padding="10">
 	              <Grid.RowDefinitions>
 	                <RowDefinition Height="Auto"/>
-	                <RowDefinition Height="10"/>
 	                <RowDefinition Height="100"/>
-	                <RowDefinition Height="10"/>
+	                <RowDefinition Height="Auto"/>
 	              </Grid.RowDefinitions>
-	              <StackLayout
+	              <StackLayout Grid.Row="0"
 	                           Spacing="4"
 	                           VerticalOptions="Center">
 	                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"/>
@@ -39,8 +38,13 @@
 	                <Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
 	              </StackLayout>
 	              
-	              <Image Grid.Row="2" Source="{Binding Pic_url}" Aspect="AspectFill"/>
-	              <Label Grid.Row="3" Text="{Binding CommentCount, Converter={StaticResource intConverter}}" VerticalOptions="End"/>
+	              <Image Grid.Row="1" Source="{Binding Pic_url}" Aspect="AspectFill"/>
+	              <StackLayout Grid.Row="2" Orientation="Horizontal">
+	              		<Label FontSize="Small">                  Likes: </Label>
+	              		<Label FontSize="Small" Text="{Binding LikeCount, Converter={StaticResource intConverter}}"/>
+	              		<Label FontSize="Small">Comments: </Label>
+	              		<Label FontSize="Small" Text="{Binding CommentCount, Converter={StaticResource intConverter}}"/>
+	              </StackLayout>
 	            </Grid>
 	          </ViewCell>
 	        </DataTemplate>

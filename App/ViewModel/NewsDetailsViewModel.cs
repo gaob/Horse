@@ -122,6 +122,34 @@ namespace App
 					string str = ex.Message;
 				}
 			});
+
+			this.LikeCommand = new Command (async (nothing) => {
+				try {
+					Comment aComment = new Comment();
+
+					aComment.Author_id = comment_author_id;
+					aComment.Author_name = comment_author_name;
+					aComment.NewsID = news_id;
+					aComment.Text = "liked this post.";
+					aComment.PublishTime = DateTime.Now;
+					aComment.Liked = true;
+
+					JToken payload = aComment.ToJToken();
+
+					var resultJson = await App.ServiceClient.InvokeApiAsync("table/comment", payload);
+
+					string rowkey = resultJson.Value<string>("rowkey");
+
+					aComment.Id = rowkey;
+
+					CommentsItems.Add(aComment);
+
+					Error = "Added";
+				} catch (Exception ex)
+				{
+					string str = ex.Message;
+				}
+			});
 		}
 
 		public async Task ExecuteLoadItemsCommand()
