@@ -52,9 +52,7 @@ namespace App
 						if (item is JObject) {
 							News anNews = new News(item as JObject);
 
-							if (DateTime.Now>anNews.PublishTime.AddMinutes(1)) {
-								NewsItems.Add(anNews);
-							}
+							NewsItems.Add(anNews);
 						} else {
 							throw new Exception("Unexpected type in resultNews");
 						}
