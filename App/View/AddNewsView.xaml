@@ -10,7 +10,7 @@
 	  		<StackLayout Orientation="Vertical" BackgroundColor = "White">
 				<Editor Text="{Binding Text}"
 						VerticalOptions="FillAndExpand"
-						BackgroundColor = "Transparent"/>
+						BackgroundColor = "Gray"/>
 			    <Image x:Name="image"
 			    	   Source="{Binding Pic_url}"></Image>
 			    <StackLayout Orientation="Horizontal">
