@@ -13,7 +13,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 	  	<ScrollView VerticalOptions="FillAndExpand">
-	  		<StackLayout Orientation="Vertical">
+	  		<StackLayout Orientation="Vertical" BackgroundColor = "White">
 	            <StackLayout Spacing="4"
 	                         VerticalOptions="Center">
 	                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"/>
@@ -22,7 +22,8 @@
 	            </StackLayout>
 	            <Image Source="{Binding Pic_url}"/>
 				<Editor Text="{Binding YourComment}"
-						VerticalOptions="FillAndExpand"/>
+						VerticalOptions="FillAndExpand"
+						BackgroundColor = "Gray"/>
 			    <StackLayout Orientation="Horizontal">
 				    <Button Text="Like"
 				    		Command="{Binding LikeCommand}"
@@ -44,8 +45,10 @@
 			              <StackLayout
 			                           Spacing="4"
 			                           VerticalOptions="Center">
-			                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"/>
-			                <Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
+			                <Label Text="{Binding Author_name}" FontSize="Small" LineBreakMode="WordWrap"
+			                	   TextColor = "Black"/>
+			                <Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"
+			                	   TextColor = "Black"/>
 			              </StackLayout>
 			          </ViewCell>
 			        </DataTemplate>

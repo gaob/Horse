@@ -14,7 +14,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 	  <StackLayout
-	    Orientation="Vertical">
+	    Orientation="Vertical" BackgroundColor="White">
 	    <ListView x:Name="listView"
 	              ItemsSource="{Binding NewsItems}"
 	              HasUnevenRows="True"

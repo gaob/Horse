@@ -7,9 +7,10 @@
 			 IsBusy="{Binding IsBusy}">
 	<ContentPage.Content>
 	  	<ScrollView VerticalOptions="FillAndExpand">
-	  		<StackLayout Orientation="Vertical">
+	  		<StackLayout Orientation="Vertical" BackgroundColor = "White">
 				<Editor Text="{Binding Text}"
-						VerticalOptions="FillAndExpand"/>
+						VerticalOptions="FillAndExpand"
+						BackgroundColor = "Transparent"/>
 			    <Image x:Name="image"
 			    	   Source="{Binding Pic_url}"></Image>
 			    <StackLayout Orientation="Horizontal">

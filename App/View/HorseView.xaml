@@ -13,7 +13,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 	  	<ScrollView VerticalOptions="FillAndExpand">
-	  		<StackLayout Orientation="Vertical">
+	  		<StackLayout Orientation="Vertical" BackgroundColor = "White">
 			    <Image x:Name="image"
 			    	   Source="{Binding Pic_url}"></Image>
 			    <StackLayout Orientation="Horizontal">
@@ -26,47 +26,53 @@
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Name"
-						   HorizontalOptions="Fill"/>
+						   HorizontalOptions="Fill"
+						   TextColor = "Black"/>
 					<Entry Text="{Binding Name}"
-						   HorizontalOptions="FillAndExpand"/>
+						   HorizontalOptions="FillAndExpand"
+						   TextColor = "Black"/>
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Gender"
-						   HorizontalOptions="Fill"/>
+						   HorizontalOptions="Fill"
+						   TextColor = "Black"/>
 					<Entry Text="{Binding Gender}"
-						   HorizontalOptions="FillAndExpand"/>
+						   HorizontalOptions="FillAndExpand"
+						   TextColor = "Black"/>
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Year"
-						   HorizontalOptions="Fill"/>
+						   HorizontalOptions="Fill"
+						   TextColor = "Black"/>
 					<Entry Text="{Binding Path=Year, Converter={StaticResource intConverter}}"
 						   HorizontalOptions="FillAndExpand"
-						   Keyboard="Numeric"/>
+						   Keyboard="Numeric"
+						   TextColor = "Black"/>
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Breed"
-						   HorizontalOptions="Fill"/>
+						   HorizontalOptions="Fill"
+						   TextColor = "Black"/>
 					<Entry Text="{Binding Breed}"
-						   HorizontalOptions="FillAndExpand"/>
+						   HorizontalOptions="FillAndExpand"
+						   TextColor = "Black"/>
 			    </StackLayout>
 			    <StackLayout Orientation="Horizontal">
 					<Label Text="Registered"
-						   HorizontalOptions="Fill"/>
+						   HorizontalOptions="Fill"
+						   TextColor = "Black"/>
 					<Entry Text="{Binding Registered}"
-						   HorizontalOptions="FillAndExpand"/>
+						   HorizontalOptions="FillAndExpand"
+						   TextColor = "Black"/>
 			    </StackLayout>
-				<Label Text="Description"/>
+				<Label Text="Description" TextColor = "Black"/>
 				<Editor Text="{Binding Description}"
-						VerticalOptions="FillAndExpand"/>
+						VerticalOptions="FillAndExpand"
+						BackgroundColor = "Gray"/>
 			    <Button Text="Save"
 			    		Command="{Binding SaveCommand}"
 			    		HorizontalOptions="FillAndExpand"/>
-				<Label Text="{Binding Error}"/>
-			   	<Label x:Name="valueLabel"
-			           Text="A simple Label"
-			           FontSize="Large"
-			           HorizontalOptions="Center"
-			           VerticalOptions="Center" />
+				<Label x:Name="valueLabel" Text="{Binding Error}" TextColor = "Red"/>
 		   	</StackLayout>
 	    </ScrollView>
 	</ContentPage.Content>
