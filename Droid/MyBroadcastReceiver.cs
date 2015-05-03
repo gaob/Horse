@@ -29,9 +29,8 @@ namespace App.Droid
     {
         public static string[] SENDER_IDS = new string[] { Constants.SenderID };
 
-        public const string TAG = "MyBroadcastReceiver-GCM";
+		public static string TAG = string.Empty;
     }
-
 
     [Service] // Must use the service tag
     public class PushHandlerService : GcmServiceBase
@@ -56,25 +55,30 @@ namespace App.Droid
             try
             {
                 Hub.UnregisterAll(registrationId);
+				System.Diagnostics.Debug.WriteLine("UnRegistering..." + MyBroadcastReceiver.TAG);
             }
             catch (Exception ex)
             {
+				System.Diagnostics.Debug.WriteLine("UnRegistering...ex:" + ex.Message);
                 Debug.WriteLine(ex.Message);
                 Debugger.Break();
             }
+
+			string[] Tags = { MyBroadcastReceiver.TAG };
+
+			System.Diagnostics.Debug.WriteLine("Registering..." + MyBroadcastReceiver.TAG);
 
              //DEMO
              //Register for native messages
             try
             {
-                var nativehubRegistration = Hub.Register(registrationId, "GoogleApp");
+				var nativehubRegistration = Hub.Register(registrationId, Tags);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 Debugger.Break();
             }
-
 
             // Transforming Template (Into a data notification)
             // The $(notificationMessage) maps in the date from the generic template notification's 
@@ -90,7 +94,6 @@ namespace App.Droid
                 Debug.WriteLine(ex.Message);
                 Debugger.Break();
             }
-
         }
 
         protected override void OnMessage(Context context, Intent intent)

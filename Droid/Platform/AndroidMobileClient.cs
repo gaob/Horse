@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Android.Content;
 using System.Net.Http;
+using Gcm.Client;
 
 [assembly: Xamarin.Forms.Dependency(typeof(App.Droid.AndroidMobileClient.AndroidLoginClient))]
 namespace App.Droid
@@ -13,11 +14,13 @@ namespace App.Droid
 		{
 			private static string USERID_PREFID = "userId";
 			private static string AUTHTOKEN_PREFID = "authToken";
+			public static Context theContext = null;
 
 			public AndroidLoginClient() {}
 
 			public async Task<MobileServiceUser> Authorize(MobileServiceAuthenticationProvider provider)
 			{
+				System.Diagnostics.Debug.WriteLine("Authorizing...");
 				return await App.ServiceClient.LoginAsync(Xamarin.Forms.Forms.Context, provider);
 			}
 
@@ -96,6 +99,10 @@ namespace App.Droid
 				// Persist the credential package to the preferences
 				editor.Commit();
 
+				// Register with the Google Cloud Service with the id field, 
+				// which is the string after "Facebook:".
+				RegisterWithGCM(theUser.UserId.Substring(9));
+
 				return true;
 			}
 
@@ -109,6 +116,21 @@ namespace App.Droid
 				editor.Remove(USERID_PREFID);
 				editor.Remove(AUTHTOKEN_PREFID);
 				editor.Commit();
+			}
+
+			/// <summary>
+			/// Registers the with GCM.
+			/// </summary>
+			private void RegisterWithGCM(string theUserID)
+			{
+				// Check to ensure everything's setup right
+				GcmClient.CheckDevice(theContext);
+				GcmClient.CheckManifest(theContext);
+
+				// Register for push notifications
+				System.Diagnostics.Debug.WriteLine("Registering..." + theUserID);
+				MyBroadcastReceiver.TAG = theUserID;
+				GcmClient.Register(theContext, Constants.SenderID);
 			}
 		}
 	}

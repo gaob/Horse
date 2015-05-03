@@ -7,7 +7,6 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using Gcm.Client;
 
 [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
 
@@ -20,27 +19,11 @@ namespace App.Droid
 		{
 			base.OnCreate (bundle);
 
-			// Register with the Google Cloud Service
-			RegisterWithGCM();
-
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 
 			LoadApplication (new App ());
+
+			AndroidMobileClient.AndroidLoginClient.theContext = this;
 		}
-
-		/// <summary>
-		/// Registers the with GCM.
-		/// </summary>
-		private void RegisterWithGCM()
-		{
-			// Check to ensure everything's setup right
-			GcmClient.CheckDevice(this);
-			GcmClient.CheckManifest(this);
-
-			// Register for push notifications
-			System.Diagnostics.Debug.WriteLine("Registering...");
-			GcmClient.Register(this, Constants.SenderID);
-		}
-
 	}
 }
