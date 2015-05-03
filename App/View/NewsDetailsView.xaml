@@ -32,6 +32,10 @@
 				    		Command="{Binding PostCommand}"
 				    		HorizontalOptions="FillAndExpand"/>
 			    </StackLayout>
+				<Button Text="Delete"
+				    	Command="{Binding DeleteCommand}"
+				    	HorizontalOptions="FillAndExpand"
+				    	IsVisible="{Binding IsDeleteEnabled}"/>
 			    <Label Text="{Binding Error}"/>
 			    <ListView x:Name="listView"
 			              ItemsSource="{Binding CommentsItems}"

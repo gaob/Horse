@@ -13,6 +13,7 @@ namespace App
 		public string Pic_url { get; set; }
 		public static string Horse_id { get; set; }
 		public static string Horse_name { get; set; }
+		public static bool isAdmin { get; set; }
 
 		public MeVM (JObject theObject)
 		{
@@ -21,6 +22,7 @@ namespace App
 			Pic_url = theObject.Value<string> ("pic_url");
 			MeVM.Horse_id = theObject.Value<string> ("horse_id");
 			MeVM.Horse_name = theObject.Value<string> ("horse_name");
+			isAdmin = theObject.Value<bool> ("isAdmin");
 		}
 	}
 }

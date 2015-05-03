@@ -54,6 +54,14 @@ namespace App
 			set { SetProperty (ref yourcomment, value, "YourComment");}
 		}
 
+		private bool isDeleteEnabled = false;
+
+		public bool IsDeleteEnabled
+		{
+			get { return isDeleteEnabled; }
+			set { SetProperty (ref isDeleteEnabled, value, "IsDeleteEnabled");}
+		}
+
 		private string error = string.Empty;
 
 		public string Error
@@ -79,6 +87,8 @@ namespace App
 
 		public ICommand LikeCommand { protected set; get; }
 
+		public ICommand DeleteCommand { protected set; get; }
+
 		public NewsDetailsViewModel (string newsID, string authorName, DateTime publishTime, string text, 
 									 string pic_url, string c_author_id, string c_author_name)
 		{
@@ -91,6 +101,7 @@ namespace App
 			Pic_url = pic_url;
 			comment_author_id = c_author_id;
 			comment_author_name = c_author_name;
+			isDeleteEnabled = MeVM.isAdmin;
 
 			//Replace icon
 			//Icon = "blog.png";
@@ -145,6 +156,23 @@ namespace App
 					CommentsItems.Add(aComment);
 
 					Error = "Added";
+				} catch (Exception ex)
+				{
+					string str = ex.Message;
+				}
+			});
+
+			this.DeleteCommand = new Command (async (nothing) => {
+				try {
+					var resultJson = await App.ServiceClient.InvokeApiAsync("table/news/" + news_id, HttpMethod.Delete, null);
+
+					string deleted_id = resultJson.Value<string>("id");
+
+					await RemoteBlobAccess.deleteFromBlobStorage_async("news-" + news_id + ".jpg");
+
+					await RemoteBlobAccess.deleteFromBlobStorage_async("news-" + news_id + "-thumbnail.jpg");
+
+					Error = "Deleted";
 				} catch (Exception ex)
 				{
 					string str = ex.Message;
