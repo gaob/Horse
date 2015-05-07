@@ -37,6 +37,13 @@ namespace App
 			MenuItems.Add(new MenuItem
 				{
 					Id = 2,
+					Title = "Notifications",
+					MenuType = MenuType.Notification,
+					Icon = "twitternav.png"
+				});
+			MenuItems.Add(new MenuItem
+				{
+					Id = 3,
 					Title = "Log Out",
 					MenuType = MenuType.LogOut,
 					Icon = "twitternav.png"

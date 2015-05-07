@@ -7,6 +7,7 @@ namespace App
 	{
 		Stable,
 		NewsFeed,
+		Notification,
 		LogOut
 	}
 

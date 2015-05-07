@@ -138,6 +138,9 @@ namespace App
 					case MenuType.Stable:
 						PageSelection = new HorseView(viewModel.id, viewModel.horse_id);
 						break;
+					case MenuType.Notification:
+						PageSelection = new NotificationsView(viewModel.id);
+						break;
 					default:
 						PageSelection = new UnevenRowsXaml();
 						break;
