@@ -85,17 +85,5 @@ namespace App
 		}
 
 		public ICommand PostCommand { protected set; get; }
-
-		public async Task LoadValues()
-		{
-			if (IsBusy)
-				return;
-
-			IsBusy = true;
-
-			//Load the values
-
-			IsBusy = false;
-		}
 	}
 }

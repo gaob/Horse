@@ -21,14 +21,11 @@ namespace App
 			BindingContext = new AddNewsViewModel (author_id, horse_id, author_name, horse_name, author_pic_url, Navigation);
 		}
 
-		protected override async void OnAppearing()
+		protected override void OnAppearing()
 		{
 			base.OnAppearing();
 			if (ViewModel == null || !ViewModel.CanLoadMore || ViewModel.IsBusy)
 				return;
-
-			//Maybe it doesn't need to load values.
-			await ViewModel.LoadValues ();
 		}
 
 		async void OnTakePhotoClicked(object sender, EventArgs args)

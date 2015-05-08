@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace App
 {
@@ -133,13 +134,19 @@ namespace App
 				switch (menuItem.MenuType)
 				{
 					case MenuType.NewsFeed:
-					PageSelection = new NewsView(viewModel.id, viewModel.horse_id, viewModel.name, viewModel.horse_name, viewModel.pic_url);
+						PageSelection = new NewsView(viewModel.id, viewModel.horse_id, viewModel.name, viewModel.horse_name, viewModel.pic_url);
 						break;
 					case MenuType.Stable:
 						PageSelection = new HorseView(viewModel.id, viewModel.horse_id);
 						break;
 					case MenuType.Notification:
 						PageSelection = new NotificationsView(viewModel.id);
+						break;
+					case MenuType.LogOut:
+						//DependencyService.Get<IMobileClient> ().ResetCachedToken (MobileServiceAuthenticationProvider.Facebook);
+						//DependencyService.Get<IMobileClient>().Logout();
+						
+						Navigation.PopModalAsync();
 						break;
 					default:
 						PageSelection = new UnevenRowsXaml();
