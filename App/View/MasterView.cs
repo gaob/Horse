@@ -123,7 +123,7 @@ namespace App
 
 			listView.ItemsSource = viewModel.MenuItems;
 			if (about == null)
-				about = new UnevenRowsXaml();
+				about = new NewsView(viewModel.id, viewModel.horse_id, viewModel.name, viewModel.horse_name, viewModel.pic_url);
 
 			PageSelection = about;
 			//Change to the correct page
@@ -149,7 +149,6 @@ namespace App
 						Navigation.PopModalAsync();
 						break;
 					default:
-						PageSelection = new UnevenRowsXaml();
 						break;
 				}
 			};

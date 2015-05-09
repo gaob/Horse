@@ -39,18 +39,10 @@
     <Compile Include="Interface\IMobileClient.cs" />
     <Compile Include="Model\MeVM.cs" />
     <Compile Include="AppConstants.cs" />
-    <Compile Include="UnevenRowsXaml.xaml.cs">
-      <DependentUpon>UnevenRowsXaml.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MasterView.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MasterViewModel.cs" />
     <Compile Include="View\BaseView.cs" />
-    <Compile Include="View\NewsFeedView.xaml.cs">
-      <DependentUpon>NewsFeedView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModel\NewsFeedViewModel.cs" />
-    <Compile Include="Model\NewsItem.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="View\HorseView.xaml.cs">
       <DependentUpon>HorseView.xaml</DependentUpon>
@@ -121,12 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WelcomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UnevenRowsXaml.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\NewsFeedView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HorseView.xaml">
