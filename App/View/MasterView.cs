@@ -29,7 +29,7 @@ namespace App
 			};
 			Detail = homeNav;
 
-			pages.Add(MenuType.Stable, homeNav);
+			pages.Add(MenuType.NewsFeed, homeNav);
 
 			master.PageSelectionChanged = (menuType) =>
 			{
@@ -153,7 +153,7 @@ namespace App
 				}
 			};
 
-			listView.SelectedItem = viewModel.MenuItems[0];
+			listView.SelectedItem = viewModel.MenuItems[1];
 			layout.Children.Add(listView);
 
 			Content = layout;
