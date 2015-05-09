@@ -153,6 +153,8 @@
     <BundleResource Include="Resources\about.png" />
     <BundleResource Include="Resources\blog%402x.png" />
     <BundleResource Include="Resources\blog.png" />
+    <BundleResource Include="Resources\ic_play.png" />
+    <BundleResource Include="Resources\refresh.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

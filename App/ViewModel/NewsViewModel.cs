@@ -29,8 +29,7 @@ namespace App
 		public NewsViewModel ()
 		{
 			Title = "News Feed";
-			//Replace icon
-			//Icon = "blog.png";
+			Icon = "blog.png";
 		}
 
 		public async Task ExecuteLoadItemsCommand()

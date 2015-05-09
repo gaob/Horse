@@ -31,8 +31,7 @@ namespace App
 		public NotificationsViewModel (string user_id)
 		{
 			Title = "Notifications Feed";
-			//Replace icon
-			//Icon = "blog.png";
+			Icon = "about.png";
 
 			id = user_id;
 		}

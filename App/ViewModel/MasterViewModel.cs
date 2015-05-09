@@ -25,7 +25,7 @@ namespace App
 					Id = 0,
 					Title = "Stable",
 					MenuType = MenuType.Stable,
-					Icon = "about.png"
+					Icon = "ic_play.png"
 				});
 			MenuItems.Add(new MenuItem
 				{
@@ -39,14 +39,14 @@ namespace App
 					Id = 2,
 					Title = "Notifications",
 					MenuType = MenuType.Notification,
-					Icon = "twitternav.png"
+					Icon = "about.png"
 				});
 			MenuItems.Add(new MenuItem
 				{
 					Id = 3,
 					Title = "Log Out",
 					MenuType = MenuType.LogOut,
-					Icon = "twitternav.png"
+					Icon = "refresh.png"
 				});
 
 			itsMe = me;

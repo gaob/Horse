@@ -17,7 +17,7 @@ namespace App
 		public HorseViewModel (string the_owner_id, string theID)
 		{
 			Title = "Stable";
-			Icon = "blog.png";
+			Icon = "ic_play.png";
 			Id = theID;
 			owner_id = the_owner_id;
 			loaded = false;
