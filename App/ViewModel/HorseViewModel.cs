@@ -46,7 +46,10 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
+						#pragma warning disable 4014
+						// Uploading image doesn't need to be awaited in order to reduce client response time.
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
+						#pragma warning restore 4014
 					}
 
 					Error = "Added";
@@ -65,7 +68,10 @@ namespace App
 					MeVM.Horse_name = Name;
 
 					if (imageBytes != null) {
+						#pragma warning disable 4014
+						// Uploading image doesn't need to be awaited in order to reduce client response time.
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "horse-" + Id + ".jpg");
+						#pragma warning restore 4014
 					}
 
 					Error = "Saved";

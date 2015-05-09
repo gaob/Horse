@@ -8,8 +8,7 @@
 	<ContentPage.Content>
 	  <StackLayout
 	    Orientation="Vertical" BackgroundColor="White">
-	    <ListView x:Name="listView"
-	              ItemsSource="{Binding NotificationsItems}"
+	    <ListView ItemsSource="{Binding NotificationsItems}"
 	              HasUnevenRows="True"
 	              IsPullToRefreshEnabled="True"
 	              RefreshCommand="{Binding LoadItemsCommand}"

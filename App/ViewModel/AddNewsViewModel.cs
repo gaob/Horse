@@ -42,7 +42,10 @@ namespace App
 					string rowkey = resultJson.Value<string>("rowkey");
 
 					if (imageBytes != null) {
+						#pragma warning disable 4014
+						// Uploading image doesn't need to be awaited in order to reduce client response time.
 						RemoteBlobAccess.uploadToBlobStorage_async(imageBytes, "news-" + rowkey + ".jpg");
+						#pragma warning restore 4014
 					}
 
 					Error = "Added";

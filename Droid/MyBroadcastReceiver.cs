@@ -68,11 +68,10 @@ namespace App.Droid
 
 			System.Diagnostics.Debug.WriteLine("Registering..." + MyBroadcastReceiver.TAG);
 
-             //DEMO
-             //Register for native messages
+            //Register for native messages
             try
             {
-				var nativehubRegistration = Hub.Register(registrationId, Tags);
+				Hub.Register(registrationId, Tags);
             }
             catch (Exception ex)
             {
@@ -87,7 +86,7 @@ namespace App.Droid
 
             try
             {
-                var templateHubRegistration = Hub.RegisterTemplate(registrationId, "data", googleTemplateMessage, null);
+                Hub.RegisterTemplate(registrationId, "data", googleTemplateMessage, null);
             }
             catch (Exception ex)
             {
@@ -132,10 +131,12 @@ namespace App.Droid
             //Auto cancel will remove the notification once the user touches it
             notification.Flags = NotificationFlags.AutoCancel;
 
+			#pragma warning disable 618
             //Set the notification info
             //we use the pending intent, passing our ui intent over which will get called
             //when the notification is tapped.
             notification.SetLatestEventInfo(this, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
+			#pragma warning restore 618
 
             //Show the notification
             notificationManager.Notify(1, notification);

@@ -75,7 +75,7 @@ namespace App
 
 			string Etag = await PutBlob_async(containerName, fileName, blobContent);
 
-			PutQueue_async (fileName);
+			await PutQueue_async (fileName);
 
 			return Etag;
 		}

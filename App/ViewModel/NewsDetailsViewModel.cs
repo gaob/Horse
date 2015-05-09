@@ -168,6 +168,8 @@ namespace App
 
 					string deleted_id = resultJson.Value<string>("id");
 
+					if (deleted_id != news_id) throw new Exception("Delete error!");
+
 					await RemoteBlobAccess.deleteFromBlobStorage_async("news-" + news_id + ".jpg");
 
 					await RemoteBlobAccess.deleteFromBlobStorage_async("news-" + news_id + "-thumbnail.jpg");

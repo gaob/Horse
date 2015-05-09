@@ -37,8 +37,7 @@
 				    	HorizontalOptions="FillAndExpand"
 				    	IsVisible="{Binding IsDeleteEnabled}"/>
 			    <Label Text="{Binding Error}"/>
-			    <ListView x:Name="listView"
-			              ItemsSource="{Binding CommentsItems}"
+			    <ListView ItemsSource="{Binding CommentsItems}"
 			              HasUnevenRows="True"
 			              IsPullToRefreshEnabled="True"
 			              RefreshCommand="{Binding LoadItemsCommand}"
