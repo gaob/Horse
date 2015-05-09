@@ -27,16 +27,18 @@ namespace App
 
 		async Task InitializeLoginButton ()
 		{
-			GetB.Text = "Get";
+			LoginB.Text = "Loading your info";
 
 			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (MobileServiceAuthenticationProvider.Facebook);
 
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null) {
-				LoginB.Text = "Log in";
+				LoginB.Text = "Log In Via Facebook";
 			} else {
-				valueLabel.Text = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
+				//valueLabel.Text = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
 
-				LoginB.Text = "Log out";
+				LoginB.Text = "Welcome Back!";
+
+				OnGetClicked (null, null);
 			}
 		}
 		
@@ -46,6 +48,8 @@ namespace App
 			{
 				// DEMO 2 - Cached credentials using the key chain
 				await AuthenticateUserCachedTokenAsync();
+
+				OnGetClicked (null, null);
 			}
 			else
 			{
@@ -76,10 +80,6 @@ namespace App
 					if (resultJson.HasValues)
 					{
 						MeVM me = new MeVM(resultJson as JObject);
-
-						valueLabel.Text = "Gotten";
-
-						//await Navigation.PushAsync(new MasterView());
 
 						await Navigation.PushModalAsync(new MasterView(me));
 					}
@@ -123,10 +123,6 @@ namespace App
 					message = ex.Message;
 				}
 			}
-
-			message = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
-
-			valueLabel.Text = message;
 		}
 	}
 }

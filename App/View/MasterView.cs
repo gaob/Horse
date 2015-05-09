@@ -143,8 +143,8 @@ namespace App
 						PageSelection = new NotificationsView(viewModel.id);
 						break;
 					case MenuType.LogOut:
-						//DependencyService.Get<IMobileClient> ().ResetCachedToken (MobileServiceAuthenticationProvider.Facebook);
-						//DependencyService.Get<IMobileClient>().Logout();
+						DependencyService.Get<IMobileClient> ().ResetCachedToken (MobileServiceAuthenticationProvider.Facebook);
+						DependencyService.Get<IMobileClient>().Logout();
 						
 						Navigation.PopModalAsync();
 						break;

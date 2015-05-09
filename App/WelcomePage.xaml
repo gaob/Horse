@@ -12,18 +12,11 @@
 	  	<Image Source="http://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/pets_improve_health_slideshow/getty_rf_photo_of_friends_riding_horses.jpg"
 	  		   VerticalOptions="FillAndExpand">
 	  	</Image>
-		<StackLayout>
 	    <Button x:Name="LoginB"
 	    		Text="Click Me!"
 	            HorizontalOptions="Center"
 	            VerticalOptions="CenterAndExpand"
 	            Clicked="OnLoginClicked" />
-	    <Button x:Name="GetB"
-	    		Text="Click Me!"
-	            HorizontalOptions="Center"
-	            VerticalOptions="CenterAndExpand"
-	            Clicked="OnGetClicked"/>
-	    </StackLayout>
 	  </StackLayout>
 	</ContentPage.Content>
 </ContentPage>
