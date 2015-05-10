@@ -38,29 +38,20 @@ namespace App
 
 				LoginB.Text = "Welcome Back!";
 
-				OnGetClicked (null, null);
+				await ContinueToMain ();
+
+				LoginB.Text = "Log In Via Facebook";
 			}
 		}
-		
+
 		async void OnLoginClicked(object sender, EventArgs args)
 		{
-			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
-			{
-				// DEMO 2 - Cached credentials using the key chain
-				await AuthenticateUserCachedTokenAsync();
+			await AuthenticateUserCachedTokenAsync();
 
-				OnGetClicked (null, null);
-			}
-			else
-			{
-				DependencyService.Get<IMobileClient> ().ResetCachedToken (MobileServiceAuthenticationProvider.Facebook);
-				DependencyService.Get<IMobileClient>().Logout();
-
-				valueLabel.Text = "Logged out";
-			}
+			await ContinueToMain ();
 		}
 
-		async void OnGetClicked(object sender, EventArgs args)
+		async Task ContinueToMain()
 		{
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
