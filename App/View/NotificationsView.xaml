@@ -16,7 +16,9 @@
 	      <ListView.ItemTemplate>
 	        <DataTemplate>
 	          <ViewCell>
-	          	<Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
+	          	<StackLayout Padding = "10">
+	          		<Label Text="{Binding Text}" FontSize="Small" LineBreakMode="WordWrap"/>
+	          	</StackLayout>
 	          </ViewCell>
 	        </DataTemplate>
 	      </ListView.ItemTemplate>
