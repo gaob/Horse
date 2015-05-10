@@ -88,6 +88,8 @@ namespace App
 			horse_name = theObject.Value<string> ("horse_name");
 			LikeCount = theObject.Value<int> ("like_count");
 			CommentCount = theObject.Value<int> ("comment_count");
+
+			author_name = author_name + " posted about " + horse_name;
 		}
 
 		public JToken ToJToken()
