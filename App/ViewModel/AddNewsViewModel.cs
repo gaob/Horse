@@ -32,8 +32,8 @@ namespace App
 					aNews.Text = Text;
 					aNews.Pic_url = string.Empty;
 					aNews.PublishTime = DateTime.Now;
-					aNews.Horse_id = HorseID;
-					aNews.Horse_name = horse_name;
+					aNews.Horse_id = MeVM.Horse_id;
+					aNews.Horse_name = MeVM.Horse_name;
 
 					JToken payload = aNews.ToJToken();
 
