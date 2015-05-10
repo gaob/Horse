@@ -53,6 +53,11 @@ namespace App
 
 		async Task ContinueToMain()
 		{
+			/*
+			await Unit_Test ();
+			return;
+			*/
+
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null)
 			{
 				valueLabel.Text = "Wrong!";
@@ -113,6 +118,78 @@ namespace App
 				{
 					message = ex.Message;
 				}
+			}
+		}
+			
+		async Task Unit_Test ()
+		{
+			try
+			{
+				//Unit Test Facebook user email: jdeqyhg_changsky_1426475025 @ tfbnw.net
+				//Password: 1
+
+				// Use test account to test get me.
+				var resultJson = await App.ServiceClient.InvokeApiAsync("me", HttpMethod.Get, null);
+
+				Assert_True(resultJson.HasValues, "me GET: nothing returned!");
+
+				MeVM me = new MeVM(resultJson as JObject);
+
+				Assert_True(me.Id == "1379198605736516", "me Id error!");
+				Assert_True(me.Name == "Lisa Amiciafhdggj Changsky", "me Name error!");
+
+				// test add horse.
+				var horse = new HorseItem();
+				horse.Name = "Test Horse";
+				horse.Owner_id = "1379198605736516";
+				horse.Gender = "Test Gender";
+				horse.Year = 2015;
+				horse.Breed = "Test Breed";
+				horse.Registered = "Test Registered";
+				horse.Description = "Test Description";
+
+				IMobileServiceTable<HorseItem> HorseTable = App.ServiceClient.GetTable<HorseItem> ();
+
+				await HorseTable.InsertAsync(horse);
+
+				string horse_id = horse.Id;
+
+				resultJson = await App.ServiceClient.InvokeApiAsync("me", HttpMethod.Get, null);
+
+				Assert_True(resultJson.HasValues, "me GET: nothing returned!");
+
+				me = new MeVM(resultJson as JObject);
+
+				Assert_True(MeVM.Horse_id == horse_id, "Add horse: id error!");
+				Assert_True(MeVM.Horse_name == horse.Name, "Add horse: name error!");
+
+				// test update horse.
+				horse.Name = "Test Horse 2";
+				await HorseTable.UpdateAsync(horse);
+
+				resultJson = await App.ServiceClient.InvokeApiAsync("me", HttpMethod.Get, null);
+
+				Assert_True(resultJson.HasValues, "me GET: nothing returned!");
+
+				me = new MeVM(resultJson as JObject);
+
+				Assert_True(MeVM.Horse_name == "Test Horse 2", "Update horse: name error!");
+
+				await HorseTable.DeleteAsync(horse);
+
+				valueLabel.Text = "Unit Tests passed";
+			}
+			catch (Exception ex)
+			{
+				// Display the exception message for unit testing.
+				valueLabel.Text = ex.Message;
+			}
+		}
+
+		void Assert_True(bool value, string message)
+		{
+			if (!value) {
+				throw new Exception (message);
 			}
 		}
 	}
