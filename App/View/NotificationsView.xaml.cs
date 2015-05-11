@@ -5,6 +5,9 @@ using Xamarin.Forms;
 
 namespace App
 {
+	/// <summary>
+	/// View to check log of notifications.
+	/// </summary>
 	public partial class NotificationsView : ContentPage
 	{
 		private NotificationsViewModel ViewModel

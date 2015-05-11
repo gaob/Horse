@@ -7,6 +7,9 @@ using System.Net.Http;
 
 namespace App
 {
+	/// <summary>
+	/// View Model of the Notifications View.
+	/// </summary>
 	public class NotificationsViewModel : BaseViewModel
 	{
 		private ObservableCollection<NotificationItem> notificationsItems = new ObservableCollection<NotificationItem>();
@@ -36,6 +39,10 @@ namespace App
 			id = user_id;
 		}
 
+		/// <summary>
+		/// Load Values of notification list from backend.
+		/// </summary>
+		/// <returns>The load items command.</returns>
 		public async Task ExecuteLoadItemsCommand()
 		{
 			if (IsBusy)

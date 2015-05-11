@@ -8,6 +8,9 @@ using Gcm.Client;
 [assembly: Xamarin.Forms.Dependency(typeof(App.Droid.AndroidMobileClient.AndroidLoginClient))]
 namespace App.Droid
 {
+	/// <summary>
+	/// Client dependent implementations of IMobileClient interfaces.
+	/// </summary>
 	public class AndroidMobileClient
 	{
 		public class AndroidLoginClient : IMobileClient

@@ -3,6 +3,9 @@ using System.IO;
 
 namespace App
 {
+	/// <summary>
+	/// Photo helper to convert image stream to raw byte array.
+	/// </summary>
 	public class PhotoHelper
 	{
 		public static byte[] ReadFully(Stream input) {

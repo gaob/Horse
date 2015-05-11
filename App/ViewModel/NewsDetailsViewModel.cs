@@ -8,6 +8,9 @@ using System.Net.Http;
 
 namespace App
 {
+	/// <summary>
+	/// View Model for the News Details View.
+	/// </summary>
 	public class NewsDetailsViewModel : BaseViewModel
 	{
 		private ObservableCollection<Comment> commentsItems = new ObservableCollection<Comment>();
@@ -103,9 +106,7 @@ namespace App
 			comment_author_name = c_author_name;
 			isDeleteEnabled = MeVM.isAdmin;
 
-			//Replace icon
-			//Icon = "blog.png";
-
+			// Post Comments Action.
 			this.PostCommand = new Command (async (nothing) => {
 				try {
 					Comment aComment = new Comment();
@@ -134,6 +135,7 @@ namespace App
 				}
 			});
 
+			// Like Action.
 			this.LikeCommand = new Command (async (nothing) => {
 				try {
 					Comment aComment = new Comment();
@@ -162,6 +164,7 @@ namespace App
 				}
 			});
 
+			// Delete Post Action.
 			this.DeleteCommand = new Command (async (nothing) => {
 				try {
 					var resultJson = await App.ServiceClient.InvokeApiAsync("table/news/" + news_id, HttpMethod.Delete, null);
@@ -181,7 +184,11 @@ namespace App
 				}
 			});
 		}
-
+			
+		/// <summary>
+		/// Load Post Values from backend.
+		/// </summary>
+		/// <returns>The load items command.</returns>
 		public async Task ExecuteLoadItemsCommand()
 		{
 			if (IsBusy)

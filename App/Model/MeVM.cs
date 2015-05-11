@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace App
 {
+	/// <summary>
+	/// MeVM stores basic user info.
+	/// </summary>
 	public class MeVM
 	{
 		public string Id { get; set; }

@@ -5,7 +5,6 @@ namespace App
 {
 	public class MobileServiceHelper
 	{
-
 		private static MobileServiceHelper _instance;
 
 		const string applicationURL = @"https://dotnet3.azure-mobile.net/";
@@ -15,8 +14,6 @@ namespace App
 
 		private MobileServiceHelper()
 		{
-			//SQLitePCL.CurrentPlatform.Init();
-
 			// Initialize the Mobile Service client with your URL and key
 			_client = new MobileServiceClient(applicationURL, applicationKey);
 

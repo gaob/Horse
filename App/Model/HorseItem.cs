@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace App
 {
+	/// <summary>
+	/// Horse item class
+	/// </summary>
 	public class HorseItem
 	{
 		[JsonProperty(PropertyName = "Id")]

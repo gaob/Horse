@@ -4,6 +4,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// News class
+	/// </summary>
 	public class News : BaseViewModel
 	{
 		public News ()

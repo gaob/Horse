@@ -5,6 +5,9 @@ using Microsoft.WindowsAzure.MobileServices;
 
 namespace App
 {
+	/// <summary>
+	/// View of the main MasterDetail page.
+	/// </summary>
 	public class MasterView : MasterDetailPage
 	{
 		private MasterViewModel ViewModel
@@ -56,6 +59,9 @@ namespace App
 		}
 	}
 
+	/// <summary>
+	/// View of the MasterDetail page's menu.
+	/// </summary>
 	public class MenuView : BaseView
 	{
 		public Action<MenuType> PageSelectionChanged;
@@ -126,7 +132,7 @@ namespace App
 				about = new NewsView(viewModel.id, viewModel.horse_id, viewModel.name, viewModel.horse_name, viewModel.pic_url);
 
 			PageSelection = about;
-			//Change to the correct page
+			//Menu selection interactions.
 			listView.ItemSelected += (sender, args) =>
 			{
 				var menuItem = listView.SelectedItem as MenuItem;

@@ -7,6 +7,9 @@ using System.IO;
 
 namespace App
 {
+	/// <summary>
+	/// View to add news.
+	/// </summary>
 	public partial class AddNewsView : ContentPage
 	{
 		private AddNewsViewModel ViewModel

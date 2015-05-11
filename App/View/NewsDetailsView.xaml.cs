@@ -5,6 +5,9 @@ using Xamarin.Forms;
 
 namespace App
 {
+	/// <summary>
+	/// View of the news detail page.
+	/// </summary>
 	public partial class NewsDetailsView : ContentPage
 	{
 		private NewsDetailsViewModel ViewModel

@@ -15,6 +15,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// Remote BLOB access class wrapper to provide interfaces to Azure Blob.
+	/// </summary>
 	public class RemoteBlobAccess
 	{
 		public static class AzureStorageConstants
@@ -75,6 +78,8 @@ namespace App
 
 			string Etag = await PutBlob_async(containerName, fileName, blobContent);
 
+			// As part of upload image to blob, a message is inserted into queue to allow
+			// backend to resize the image.
 			await PutQueue_async (fileName);
 
 			return Etag;

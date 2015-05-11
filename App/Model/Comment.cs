@@ -3,6 +3,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// Comment class
+	/// </summary>
 	public class Comment : BaseViewModel
 	{
 		public Comment ()

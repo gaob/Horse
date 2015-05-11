@@ -6,6 +6,9 @@ using Xamarin.Forms;
 
 namespace App
 {
+	/// <summary>
+	/// View Model to add horses.
+	/// </summary>
 	public class HorseViewModel : BaseViewModel
 	{
 		private string Id { get; set;}
@@ -25,8 +28,8 @@ namespace App
 			imageBytes = null;
 
 			this.SaveCommand = new Command (async (nothing) => {
+				// horse == null means it's an ADD action.
 				if (horse == null) {
-					//Prevent add when no image present
 					horse = new HorseItem();
 					horse.Name = Name;
 					horse.Owner_id = owner_id;
@@ -54,6 +57,7 @@ namespace App
 
 					Error = "Added";
 				} else {
+					// horse != null means it's an UPDATE action.
 					horse.Name = Name;
 					horse.Owner_id = owner_id;
 					horse.Gender = Gender;
@@ -150,6 +154,10 @@ namespace App
 
 		public ICommand SaveCommand { protected set; get; }
 
+		/// <summary>
+		/// Loads the horse values from the backend.
+		/// </summary>
+		/// <returns>The values.</returns>
 		public async Task LoadValues()
 		{
 			if (IsBusy || loaded)

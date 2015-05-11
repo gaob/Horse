@@ -10,6 +10,9 @@ using System.Net.Http;
 [assembly: Xamarin.Forms.Dependency(typeof(iOSMobileClient))]
 namespace App.iOS
 {
+	/// <summary>
+	/// Client dependent implementations of IMobileClient interfaces.
+	/// </summary>
 	public class iOSMobileClient : IMobileClient
 	{
 		public async Task<MobileServiceUser> Authorize(Microsoft.WindowsAzure.MobileServices.MobileServiceAuthenticationProvider provider)

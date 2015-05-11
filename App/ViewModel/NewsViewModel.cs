@@ -7,6 +7,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// View Model to News Feed View.
+	/// </summary>
 	public class NewsViewModel : BaseViewModel
 	{
 		private ObservableCollection<News> newsItems = new ObservableCollection<News>();
@@ -32,6 +35,10 @@ namespace App
 			Icon = "blog.png";
 		}
 
+		/// <summary>
+		/// Load Values of news list from backend.
+		/// </summary>
+		/// <returns>The load items command.</returns>
 		public async Task ExecuteLoadItemsCommand()
 		{
 			if (IsBusy)

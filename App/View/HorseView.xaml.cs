@@ -7,6 +7,9 @@ using System.IO;
 
 namespace App
 {
+	/// <summary>
+	/// View to add horse.
+	/// </summary>
 	public partial class HorseView : ContentPage
 	{
 		private HorseViewModel ViewModel

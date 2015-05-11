@@ -3,6 +3,9 @@ using Xamarin.Forms;
 
 namespace App
 {
+	/// <summary>
+	/// Base class of all views.
+	/// </summary>
 	public class BaseView : ContentPage
 	{
 		public BaseView ()

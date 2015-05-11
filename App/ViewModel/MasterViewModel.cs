@@ -3,6 +3,9 @@ using System.Collections.ObjectModel;
 
 namespace App
 {
+	/// <summary>
+	/// View Model for the MasterDetailPage View.
+	/// </summary>
 	public class MasterViewModel : BaseViewModel
 	{
 		public ObservableCollection<MenuItem> MenuItems { get; set; }

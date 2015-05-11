@@ -9,12 +9,16 @@ using System.Net.Http;
 
 namespace App
 {
+	/// <summary>
+	/// View of the First Page.
+	/// </summary>
 	public partial class WelcomePage : ContentPage
 	{
 		public WelcomePage ()
 		{
 			InitializeComponent ();
 
+			// Need to hide the navigation bar for the first page.
 			NavigationPage.SetHasNavigationBar (this, false);
 		}
 
@@ -31,11 +35,11 @@ namespace App
 
 			await DependencyService.Get<IMobileClient> ().RetrieveCachedToken (MobileServiceAuthenticationProvider.Facebook);
 
+			// No user cache presents, prompt to ask for log in.
 			if (App.ServiceClient.CurrentUser == null || App.ServiceClient.CurrentUser.UserId == null) {
 				LoginB.Text = "Log In Via Facebook";
 			} else {
-				//valueLabel.Text = string.Format("You are now logged in - {0}", App.ServiceClient.CurrentUser.UserId);
-
+				// User cache presents, going to the Main Page.
 				LoginB.Text = "Welcome Back!";
 
 				await ContinueToMain ();
@@ -44,6 +48,11 @@ namespace App
 			}
 		}
 
+		/// <summary>
+		/// Action of the log in button.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="args">Arguments.</param>
 		async void OnLoginClicked(object sender, EventArgs args)
 		{
 			await AuthenticateUserCachedTokenAsync();
@@ -53,7 +62,7 @@ namespace App
 
 		async Task ContinueToMain()
 		{
-			/*
+			/* Simple customized unit test method to test REST apis.
 			await Unit_Test ();
 			return;
 			*/
@@ -66,10 +75,7 @@ namespace App
 			{
 				try
 				{
-					// Create the json to send using an anonymous type 
-					//JToken payload = JObject.FromObject(new { msg = "facebook" });
-
-					// Make the call to the hello resource asynchronously using POST verb
+					// Make the call to the me resource asynchronously using POST verb
 					var resultJson = await App.ServiceClient.InvokeApiAsync("me", HttpMethod.Get, null);
 
 					// Verfiy that a result was returned

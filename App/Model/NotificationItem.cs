@@ -3,6 +3,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// Notification item class
+	/// </summary>
 	public class NotificationItem : BaseViewModel
 	{
 		public NotificationItem ()

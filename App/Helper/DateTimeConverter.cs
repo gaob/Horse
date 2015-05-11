@@ -4,6 +4,9 @@ using System.Globalization;
 
 namespace App
 {
+	/// <summary>
+	/// Date time converter used in XAML file.
+	/// </summary>
 	public class DateTimeConverter : IValueConverter
 	{
 		public object Convert (

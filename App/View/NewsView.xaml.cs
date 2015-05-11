@@ -5,6 +5,9 @@ using Xamarin.Forms;
 
 namespace App
 {
+	/// <summary>
+	/// View of the News Feed page.
+	/// </summary>
 	public partial class NewsView : ContentPage
 	{
 		private NewsViewModel ViewModel
@@ -16,12 +19,14 @@ namespace App
 		{
 			InitializeComponent ();
 
+			// Toolbar Item to add news.
 			ToolbarItems.Add (new ToolbarItem ("Filter", "blog.png", async () => {
 				await this.Navigation.PushAsync(new AddNewsView(author_id, horse_id, author_name, horse_name, author_pic_url));
 			}));
 
 			BindingContext = new NewsViewModel ();
 
+			// List selection interaction to see news details.
 			listView.ItemTapped += (sender, args) =>
 			{
 				if (listView.SelectedItem == null)

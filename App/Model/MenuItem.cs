@@ -11,6 +11,9 @@ namespace App
 		LogOut
 	}
 
+	/// <summary>
+	/// Menu item class
+	/// </summary>
 	public class MenuItem
 	{
 		public MenuItem ()

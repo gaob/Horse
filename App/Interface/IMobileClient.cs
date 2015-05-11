@@ -4,6 +4,9 @@ using Microsoft.WindowsAzure.MobileServices;
 
 namespace App
 {
+	/// <summary>
+	/// mobile client interfaces in the shared code, detailed implementations are in each client code.
+	/// </summary>
 	public interface IMobileClient
 	{
 		Task<MobileServiceUser> Authorize(MobileServiceAuthenticationProvider provider);

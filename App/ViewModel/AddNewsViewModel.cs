@@ -6,6 +6,9 @@ using Newtonsoft.Json.Linq;
 
 namespace App
 {
+	/// <summary>
+	/// View Model to add news.
+	/// </summary>
 	public class AddNewsViewModel : BaseViewModel
 	{
 		private string AuthorID { get; set;}
@@ -58,6 +61,10 @@ namespace App
 			});
 		}
 
+		/// <summary>
+		/// Method to receive image bytes from View.
+		/// </summary>
+		/// <param name="theImageBytes">The image bytes.</param>
 		public void passImageBytes(byte[] theImageBytes)
 		{
 			imageBytes = theImageBytes;

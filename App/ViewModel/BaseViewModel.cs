@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace App
 {
+	/// <summary>
+	/// Base class of all View Model.
+	/// </summary>
 	public class BaseViewModel : INotifyPropertyChanged
 	{
 		public BaseViewModel ()

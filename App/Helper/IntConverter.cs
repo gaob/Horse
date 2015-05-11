@@ -4,6 +4,9 @@ using System.Globalization;
 
 namespace App
 {
+	/// <summary>
+	/// Int converter used in XAML files.
+	/// </summary>
 	public class IntConverter : IValueConverter
 	{
 		public object Convert (
